@@ -2,7 +2,7 @@
 
 = Constructor =
 importing
-pv_program_of_screen type progname
+ pv_program_of_screen type progname
 
     importing
       PV_PROGRAM_OF_SCREEN type PROGNAME
