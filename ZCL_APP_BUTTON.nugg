@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_APP_BUTTON">
+ <CLAS CLSNAME="ZCL_APP_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar Button" UUID="2331F798F36EC742956FD7CA8D018280" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <friends CLSNAME="ZCL_APP_BUTTON" REFCLSNAME="ZCL_GUI_TABLE" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130407" CHANGEDON="00000000"/>
+  <implementing CLSNAME="ZCL_APP_BUTTON" REFCLSNAME="ZIF_UCOMM_ACTION_LISTENER" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" RELTYPE="1"/>
+  <publicSection>class ZCL_APP_BUTTON definition
+  public
+  create public
+
+  global friends ZCL_GUI_TABLE .
+
+*&quot;* public components of class ZCL_APP_BUTTON
+*&quot;* do not include other source files here!!!
+public section.
+
+  interfaces ZIF_UCOMM_ACTION_LISTENER .
+
+  methods CONSTRUCTOR
+    importing
+      !PV_LABEL type SMP_DYNTXT-ICON_TEXT
+      !PV_ICONNAME type ICONNAME optional
+      !PV_CAPTION type SMP_DYNTXT-ICON_TEXT optional .
+  methods ADD_ACTION_LISTENER
+    importing
+      !PO_BUTTON_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods REMOVE_ACTION_LISTENER
+    importing
+      !PO_BUTTON_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods SET_LABEL
+    importing
+      !PV_LABEL type GUI_TEXT .
+  methods REMOVE_ALL_LISTENERS .</publicSection>
+  <protectedSection>*&quot;* protected components of class ZCL_APP_BUTTON
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_APP_BUTTON
+*&quot;* do not include other source files here!!!
+private section.
+
+  data:
+    t_button_listeners type table of ref to
+        zif_button_action_listener .
+  data VALUES type SMP_DYNTXT .</privateSection>
+  <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+  <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_APP_BUTTON" CMPNAME="T_BUTTON_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="7 " SRCCOLUMN2="33 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_APP_BUTTON" CMPNAME="VALUES" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Program interface for dynamic texts" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SMP_DYNTXT" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <interfaceMethod CLSNAME="ZCL_APP_BUTTON" CPDNAME="ZIF_UCOMM_ACTION_LISTENER~ACTION_RAISED">
+   <source>method zif_ucomm_action_listener~action_raised.
+
+  data:
+    action_listener like line of t_button_listeners.
+
+  loop at t_button_listeners into action_listener.
+    action_listener-&gt;button_pressed( me ).
+  endloop.
+
+endmethod.</source>
+  </interfaceMethod>
+  <method CLSNAME="ZCL_APP_BUTTON" CMPNAME="ADD_ACTION_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_APP_BUTTON" CMPNAME="ADD_ACTION_LISTENER" SCONAME="PO_BUTTON_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method add_action_listener.
+
+  append po_button_listener to t_button_listeners.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_BUTTON" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_APP_BUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_LABEL" VERSION="1" LANGU="E" DESCRIPT="PV_LABEL" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SMP_DYNTXT-ICON_TEXT"/>
+   <parameter CLSNAME="ZCL_APP_BUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_ICONNAME" VERSION="1" LANGU="E" DESCRIPT="PV_ICONNAME" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ICONNAME" PAROPTIONL="X"/>
+   <parameter CLSNAME="ZCL_APP_BUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_CAPTION" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Icon text (4.0)" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130407" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SMP_DYNTXT-ICON_TEXT" PAROPTIONL="X"/>
+   <source>method constructor.
+
+*  zif_ucomm_action_listener~ucomm = pv_ucomm.
+
+  if pv_iconname is not initial.
+    values-icon_id = pv_iconname.
+    values-icon_text = pv_label.
+    values-quickinfo = pv_caption. &quot;If this is blank the label will be displayed as the caption.
+*    values-text = pv_caption. &quot;This field or quikinfo works for the caption when icon_id is populated.
+  else.
+*    if pv_label is initial and pv_caption is initial.
+*      values-text = &apos;[No Label]&apos;. //TODO is all fields blank nothing is shown and it is disabled
+*                                     Currently used to have uninitialised buttons on bar but need
+*                                     have disabled attribute to perform same function more correctly
+*    else.
+      values-text = pv_label.
+      values-quickinfo = pv_caption. &quot;This shows as the label if the text field is blank.
+*     values-icon_text = . &quot;This is redundant if the icon_id has no value.
+*    endif.
+  endif.
+
+*TEXT       GUI_TEXT    CHAR  40  0 Menu Painter: Function or menu text (4.0)
+*ICON_ID    ICON_D      CHAR  4   0 Icon in text fields (substitute display, alias)
+*ICON_TEXT  GUI_ICTEXT  CHAR  40  0 Menu Painter: Icon text (4.0)
+*QUICKINFO  GUI_INFO    CHAR  60  0 Menu Painter: Info text (4.0)
+*PATH       CUA_PATH    CHAR  1   0 Fastpath ID
+
+*  zcl_ucomm_dispatcher=&gt;add_toolbarlistener( po_ucomm_listener = me pv_ucomm = pv_ucomm ).
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_BUTTON" CMPNAME="REMOVE_ACTION_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_APP_BUTTON" CMPNAME="REMOVE_ACTION_LISTENER" SCONAME="PO_BUTTON_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method remove_action_listener.
+  delete table t_button_listeners with table key table_line = po_button_listener.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_BUTTON" CMPNAME="REMOVE_ALL_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method remove_all_listeners.
+  clear t_button_listeners.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_BUTTON" CMPNAME="SET_LABEL" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_APP_BUTTON" CMPNAME="SET_LABEL" SCONAME="PV_LABEL" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Function or menu text (4.0)" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="GUI_TEXT"/>
+   <source>method set_label.
+
+  values-text = pv_label.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>
