@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_SCREENBUTTON">
+ <CLAS CLSNAME="ZCL_SCREENBUTTON" VERSION="1" LANGU="E" UUID="B441C8BE53213843BBEBE7B9BC4FA0F3" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <implementing CLSNAME="ZCL_SCREENBUTTON" REFCLSNAME="ZIF_UCOMM_ACTION_LISTENER" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" RELTYPE="1"/>
+  <publicSection>class ZCL_SCREENBUTTON definition
+  public
+  create public .
+
+*&quot;* public components of class ZCL_SCREENBUTTON
+*&quot;* do not include other source files here!!!
+public section.
+
+  interfaces ZIF_UCOMM_ACTION_LISTENER .
+
+  data IS_ACTIVE type XFELD value &apos; &apos; read-only .
+  data NAME type D021S-FNAM .
+  data ICONNAME type ICONNAME .
+  data ICON_ID type ICON_D .
+
+  methods CONSTRUCTOR
+    importing
+      !PV_UCOMM type SYUCOMM
+      !PV_LABEL type SMP_DYNTXT-ICON_TEXT
+      !PV_ICONNAME type ICONNAME .
+  methods ADD_ACTION_LISTENER
+    importing
+      !PO_ACTION_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods REMOVE_ACTION_LISTENER
+    importing
+      !PO_ACTION_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_BUTTON
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_SCREENBUTTON
+*&quot;* do not include other source files here!!!
+private section.
+
+  data LABEL type SMP_DYNTXT-ICON_TEXT .
+  data:
+    ACTION_LISTENERS type table of ref to zif_button_action_listener .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_SCREENBUTTON" CMPNAME="ACTION_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="7 " SRCCOLUMN1="4 " SRCROW2="7 " SRCCOLUMN2="67 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENBUTTON" CMPNAME="ICONNAME" VERSION="1" LANGU="E" DESCRIPT="ICONNAME" EXPOSURE="2" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ICONNAME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENBUTTON" CMPNAME="ICON_ID" VERSION="1" LANGU="E" DESCRIPT="ICON_ID" EXPOSURE="2" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ICON_D" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENBUTTON" CMPNAME="IS_ACTIVE" VERSION="1" LANGU="E" DESCRIPT="IS_ACTIVE" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" ATTDECLTYP="0" ATTRDONLY="X" ATTVALUE="&apos; &apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="XFELD" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENBUTTON" CMPNAME="LABEL" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Icon text (4.0)" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SMP_DYNTXT-ICON_TEXT" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENBUTTON" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="NAME" EXPOSURE="2" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <interfaceMethod CLSNAME="ZCL_SCREENBUTTON" CPDNAME="ZIF_UCOMM_ACTION_LISTENER~ACTION_RAISED">
+   <source>method zif_ucomm_action_listener~action_raised.
+
+  data:
+    action_listener like line of action_listeners.
+
+  loop at action_listeners into action_listener.
+    action_listener-&gt;button_pressed( me ).
+  endloop.
+
+endmethod.</source>
+  </interfaceMethod>
+  <method CLSNAME="ZCL_SCREENBUTTON" CMPNAME="ADD_ACTION_LISTENER" VERSION="1" LANGU="E" DESCRIPT="ADD_ACTION_LISTENER" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENBUTTON" CMPNAME="ADD_ACTION_LISTENER" SCONAME="PO_ACTION_LISTENER" VERSION="1" LANGU="E" DESCRIPT="PO_ACTION_LISTENER" CMPTYPE="1" MTDTYPE="0" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method add_action_listener.
+
+  is_active = &apos;X&apos;.
+  append po_action_listener to action_listeners.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENBUTTON" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENBUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_UCOMM" VERSION="1" LANGU="E" DESCRIPT="PV_UCOMM" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SYUCOMM"/>
+   <parameter CLSNAME="ZCL_SCREENBUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_LABEL" VERSION="1" LANGU="E" DESCRIPT="PV_LABEL" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SMP_DYNTXT-ICON_TEXT"/>
+   <parameter CLSNAME="ZCL_SCREENBUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_ICONNAME" VERSION="1" LANGU="E" DESCRIPT="PV_ICONNAME" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ICONNAME"/>
+   <source>method constructor.
+
+  zif_ucomm_action_listener~ucomm = pv_ucomm.
+  label = pv_label.
+  iconname = pv_iconname.
+
+  zcl_ucomm_dispatcher=&gt;add_toolbarlistener( po_ucomm_listener = me pv_ucomm = pv_ucomm ).
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENBUTTON" CMPNAME="REMOVE_ACTION_LISTENER" VERSION="1" LANGU="E" DESCRIPT="REMOVE_ACTION_LISTENER" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENBUTTON" CMPNAME="REMOVE_ACTION_LISTENER" SCONAME="PO_ACTION_LISTENER" VERSION="1" LANGU="E" DESCRIPT="PO_ACTION_LISTENER" CMPTYPE="1" MTDTYPE="0" EDITORDER="8 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method REMOVE_ACTION_LISTENER .
+
+
+    delete table action_listeners with table key table_line = po_action_listener.
+    if action_listeners is initial.
+      is_active = &apos; &apos;.
+    endif.
+
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

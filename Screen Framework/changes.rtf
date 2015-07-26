@@ -1,0 +1,654 @@
+{\rtf1\ansi\deff3\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset0 Liberation Serif{\*\falt Times New Roman};}{\f4\froman\fprq0\fcharset128 Arial monospaced for SAP;}{\f5\froman\fprq0\fcharset128 Arial;}{\f6\froman\fprq0\fcharset128 Liberation Serif{\*\falt Times New Roman};}{\f7\fswiss\fprq0\fcharset128 Liberation Sans{\*\falt Arial};}{\f8\fnil\fprq0\fcharset128 Lohit Hindi;}{\f9\fnil\fprq2\fcharset0 FreeSans;}{\f10\fswiss\fprq0\fcharset128 FreeSans;}{\f11\fnil\fprq2\fcharset0 Liberation Serif{\*\falt Times New Roman};}}
+{\colortbl;\red0\green0\blue0;\red0\green113\blue225;\red255\green104\blue32;\red104\green131\blue139;\red255\green215\blue0;\red0\green147\blue0;\red77\green166\blue25;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057 Normal;}
+{\s15\sbasedon0\snext16\ql\nowidctlpar\sb240\sa120\keepn\ltrpar\cf1\kerning1\dbch\af8\langfe2052\dbch\af9\afs28\alang1081\loch\f7\fs28\lang2057 Heading;}
+{\s16\sbasedon0\snext16\sl288\slmult1\ql\nowidctlpar\sb0\sa120\ltrpar\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057 Text Body;}
+{\s17\sbasedon16\snext17\sl288\slmult1\ql\nowidctlpar\sb0\sa120\ltrpar\cf1\kerning1\dbch\af8\langfe2052\dbch\af10\afs24\alang1081\loch\f6\fs24\lang2057 List;}
+{\s18\sbasedon0\snext18\ql\nowidctlpar\sb120\sa120\noline\ltrpar\cf1\i\kerning1\dbch\af8\langfe2052\dbch\af10\afs24\alang1081\ai\loch\f6\fs24\lang2057 Caption;}
+{\s19\sbasedon0\snext19\ql\nowidctlpar\noline\ltrpar\cf1\kerning1\dbch\af8\langfe2052\dbch\af10\afs24\alang1081\loch\f6\fs24\lang2057 Index;}
+}{\info{\creatim\yr0\mo0\dy0\hr0\min0}{\revtim\yr0\mo0\dy0\hr0\min0}{\printim\yr0\mo0\dy0\hr0\min0}{\comment LibreOffice}{\vern67241986}}\deftab720
+\viewscale80
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse451\pgwsxn12240\pghsxn15840\marglsxn1800\margrsxn1800\margtsxn1440\margbsxn1440\pgdscnxt0 Default Style;}}
+\formshade{\*\pgdscno0}\paperh15840\paperw12240\margl1800\margr1800\margt1440\margb1440\sectd\sbknone\sectunlocked1\pgndec\pgwsxn12240\pghsxn15840\marglsxn1800\margrsxn1800\margtsxn1440\margbsxn1440\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\fs20\loch\f4
+  }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+* Allows }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+the construction of a more }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+complet}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ly}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ object orientated program / report }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+and}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ dynamic screens. }
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\fs20\loch\f4
+  }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+* Developed on SAP 4.7 (620), has been tested to work on SAP 720 also. }
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\fs20\loch\f4
+  }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+* Example program available to demonstrate its workings and serves as a template for its use in a model/view/controller structured program.}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf1\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\loch\fs20\loch\f5
+zcl_ucomm_dispatcher}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\loch\fs20\loch\f5
+cursor offset PAI and PBO and attribute}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f5
+zcl_gui_table}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\loch\fs20\loch\f5
+build_field_catalog}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+data }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+type }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+dfies}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        flddescr }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+elemdesc}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+get_ddic_field}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+( }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+langu }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+)}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+.}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf1\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+call method }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+elemdesc}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+get_ddic_field}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+exporting}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            p_langu      }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+SY}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+LANGU}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          receiving}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            p_flddescr   }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+exceptions}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            not_found    }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+1}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            no_ddic_type }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+2}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+others       }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+3}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+if }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+subrc <> }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+0}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*         MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*                    WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endif}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\fs20\loch\f4
+ }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+loop at }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+structype}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+components }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+into component}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+    }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+assign component }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+tabix }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+of structure }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<line> }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+to }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<field>}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*    read table tabledesc->key index sy-tabix "//TODO does this structure contain all fields of the table or just the keys?}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+    }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+try}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        elemdesc ?= cl_abap_elemdescr}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+=>}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+describe_by_data}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+( }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<field> }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+)}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+append initial line to }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+pt_fcat }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+assigning }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+data }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+type }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+dfies}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        flddescr = elemdesc->get_ddic_field( sy-langu ).}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+call method }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+elemdesc}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+get_ddic_field}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+exporting}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            p_langu      }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+langu}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          receiving}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            p_flddescr   }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+exceptions}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            not_found    }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+1}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            no_ddic_type }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+2}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+others       }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+3}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+if }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+subrc <> }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+0}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+message id }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgid }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+type }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgty }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+number }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgno }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+with }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgv1 sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgv2 sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgv3 sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+msgv4}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+data charlen  type i}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+charlen }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+CL_ABAP_CHAR_UTILITIES}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+=>}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+charsize}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+else}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endif}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+move-corresponding }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+to }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        <s_fcat>-coltext = flddescr-scrtext_l.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        <s_fcat>-seltext = flddescr-fieldtext.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        <s_fcat>-domname = flddescr-domname.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        <s_fcat>-rollname = flddescr-rollname.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fieldname }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+clear }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+f4availabl}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        if <s_fcat>-tabname eq <s_fcat>-rollname.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*          clear <s_fcat>-tabname.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        endif.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        name }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+elemdesc}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+help_id}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+split }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+at }{\cf7\rtlch \ltrch\loch\fs20\loch\f4
+'-' }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+into }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+structnam fnam}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+if }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fnam }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+is not initial}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ref_table }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+structnam}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ref_field }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fnam}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endif}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*        <s_fcat>-col_opt = 'X'.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+      }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+catch }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+cx_sy_move_cast_error}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        typedesc ?= cl_abap_elemdescr}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+=>}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+describe_by_data}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+( }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<field> }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+)}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+message }{\cf7\rtlch \ltrch\loch\fs20\loch\f4
+'Automatic field catalog builder is not currently capable of handling deep structures'  }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+type }{\cf7\rtlch \ltrch\loch\fs20\loch\f4
+'E'}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+    }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endtry}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+  }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endloop}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf3\rtlch \ltrch\loch\fs20\loch\f5
+************************************}
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057\cf3\rtlch \ltrch\loch\fs20\loch\f4
+
+\par \pard\plain \s0\ql\nowidctlpar\ltrpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf1\kerning1\dbch\af8\langfe2052\dbch\af11\afs24\alang1081\loch\f6\fs24\lang2057{\cf1\rtlch \ltrch\fs20\loch\f4
+  }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+loop at }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+structype}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+components }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+into component}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+    }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+assign component }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+tabix }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+of structure }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<line> }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+to }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<field>}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*    read table tabledesc->key index sy-tabix "//TODO does this structure contain all fields of the table or just the keys?}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+    }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+try}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        elemdesc ?= cl_abap_elemdescr}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+=>}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+describe_by_data}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+( }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<field> }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+)}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+append initial line to }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+pt_fcat }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+assigning }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+data }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+type }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+dfies}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+call method }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+elemdesc}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+get_ddic_field}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+exporting}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            p_langu      }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+langu}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          receiving}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            p_flddescr   }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+exceptions}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            not_found    }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+1}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            no_ddic_type }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+2}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+others       }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+3}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+if }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+sy}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+subrc <> }{\cf5\rtlch \ltrch\loch\fs20\loch\f4
+0}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fieldname }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+inttype }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+type_kind}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+outputlen }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+length}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+data charlen  type i}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+charlen }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+CL_ABAP_CHAR_UTILITIES}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+=>}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+charsize}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+divide }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+outputlen }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+by charlen}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+coltext }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+seltext }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+else}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+move-corresponding }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+flddescr }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+to }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fieldname }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+component}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+clear }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+f4availabl}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*          if <s_fcat>-tabname eq <s_fcat>-rollname.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*            clear <s_fcat>-tabname.}{\rtlch \ltrch\loch
+\line }{\cf6\rtlch \ltrch\loch\fs20\loch\f4
+*          endif.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          name }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+elemdesc}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+->}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+help_id}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+split }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+name }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+at }{\cf7\rtlch \ltrch\loch\fs20\loch\f4
+'-' }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+into }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+structnam fnam}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+if }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fnam }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+is not initial}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ref_table }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+structnam}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+            <s_fcat>}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+-}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+ref_field }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+= }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+fnam}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+          }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endif}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endif}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line \line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+      }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+catch }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+cx_sy_move_cast_error}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        typedesc ?= cl_abap_elemdescr}{\cf4\rtlch \ltrch\loch\fs20\loch\f4
+=>}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+describe_by_data}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+( }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+<field> }{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+)}{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+        }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+message }{\cf7\rtlch \ltrch\loch\fs20\loch\f4
+'Automatic field catalog builder is not currently capable of handling deep structures'  }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+type }{\cf7\rtlch \ltrch\loch\fs20\loch\f4
+'E'}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+    }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endtry}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}{\rtlch \ltrch\loch
+\line }{\cf1\rtlch \ltrch\loch\fs20\loch\f4
+  }{\cf2\rtlch \ltrch\loch\fs20\loch\f4
+endloop}{\cf3\rtlch \ltrch\loch\fs20\loch\f4
+.}
+\par }

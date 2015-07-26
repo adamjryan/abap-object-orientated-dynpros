@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_SCREENFIELD">
+ <CLAS CLSNAME="ZCL_SCREENFIELD" VERSION="1" LANGU="E" DESCRIPT="Screen text element (label, input/output)" UUID="24E51F0883259A4BA730CEBC2568A8E8" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130107" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <friends CLSNAME="ZCL_SCREENFIELD" REFCLSNAME="ZCL_SCREEN" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_SCREENFIELD definition
+  public
+  create public
+
+  global friends ZCL_SCREEN .
+
+*&quot;* public components of class ZCL_SCREENFIELD
+*&quot;* do not include other source files here!!!
+public section.
+
+  data SCREENFNAME type D021S-FNAM .
+
+  methods ADD_ACTION_LISTENER
+    importing
+      !PO_ACTION_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods CONSTRUCTOR
+    importing
+      !PV_NAME type D021S-FNAM
+      !PV_SCREENNAME type D021S-FNAM .
+  methods GET_VALUE
+    changing
+      value(PV_VALUE) type DATA .
+  methods RELAY_FIELD_ENTRY .
+  methods REMOVE_ACTION_LISTENER
+    importing
+      !PO_ACTION_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods SET_INTENSIFIED
+    importing
+      !PV_IS_INTENSIFIED type SCREEN-INTENSIFIED .
+  type-pools ABAP .
+  methods SET_INVISIBLE
+    importing
+      !PV_IS_INVISIBLE type ABAP_BOOL .
+  methods SET_IS_INPUT
+    importing
+      !PV_IS_INPUT type ABAP_BOOL .
+  methods SET_SCREEN_ATTRIBUTES
+    changing
+      !PV_SCREEN_ATTRIBUTES type SCREEN .
+  methods SET_VALUE
+    importing
+      !PV_DATA_TO_DISPLAY type DATA .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_SCREENFIELD
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_SCREENFIELD
+*&quot;* do not include other source files here!!!
+private section.
+
+  data NAME type D021S-FNAM .
+  data OUTPUT_WIDTH type ref to DATA .
+  data SCREENNAME type D021S-FNAM .
+  data VAL type ref to DATA .
+  data SCREEN_ATTRIBUTES type SCREEN .
+  data ATT_CHANGED type FLAG .
+  data:
+    action_listeners type table of ref to zif_button_action_listener .
+  data LISTENER_ACTIVE type FLAG .
+  data INVISIBLE_SET type FLAG .
+
+  methods GET_SCREEN_ATTRIBUTES
+    returning
+      value(PV_SCREEN_ATTRIBUTES) type SCREEN .
+  type-pools ABAP .
+  methods SET_REQUIRED
+    importing
+      !PV_IS_REQUIRED type ABAP_BOOL .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <typeUsage CLSNAME="ZCL_SCREENFIELD" TYPEGROUP="ABAP" VERSION="1" TPUTYPE="0" IMPLICIT="X"/>
+  <forwardDeclaration>ABAP</forwardDeclaration>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="ACTION_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="8 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="12 " SRCCOLUMN1="4 " SRCROW2="12 " SRCCOLUMN2="67 "/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="ATT_CHANGED" VERSION="1" LANGU="E" DESCRIPT="General Flag" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="INVISIBLE_SET" VERSION="1" LANGU="E" DESCRIPT="General Flag" EXPOSURE="0" STATE="1" EDITORDER="10 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="LISTENER_ACTIVE" VERSION="1" LANGU="E" DESCRIPT="General Flag" EXPOSURE="0" STATE="1" EDITORDER="9 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="OUTPUT_WIDTH" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="DATA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="SCREENFNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="2" STATE="1" EDITORDER="7 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" DESCRIPT="Structure Description for the System Data Object SCREEN" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SCREEN" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFIELD" CMPNAME="VAL" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="DATA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="ADD_ACTION_LISTENER" VERSION="1" LANGU="E" DESCRIPT="ADD_ACTION_LISTENER" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="ADD_ACTION_LISTENER" SCONAME="PO_ACTION_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method add_action_listener.
+
+  append po_action_listener to action_listeners.
+
+  if listener_active is initial.
+    zcl_ucomm_dispatcher=&gt;add_screenfield_listener( me ).
+    listener_active = &apos;X&apos;.
+  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="CONSTRUCTOR" SCONAME="PV_NAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="CONSTRUCTOR" SCONAME="PV_SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <source>method constructor.
+  name = pv_name.
+  screen_attributes-name = screenname = pv_screenname.
+  create data val type d021s-fnam.
+  screen_attributes-active = 1.
+*  att_changed = &apos;X&apos;. &quot;Added to set screenfield with default initial state (Input disabled as default for now)
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="GET_SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="11 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="GET_SCREEN_ATTRIBUTES" SCONAME="PV_SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" DESCRIPT="Structure Description for the System Data Object SCREEN" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="SCREEN"/>
+   <source>method get_screen_attributes.
+  pv_screen_attributes = screen_attributes.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="GET_VALUE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="GET_VALUE" SCONAME="PV_VALUE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDBY="ITAJR" CHANGEDON="20130305" PARDECLTYP="2" PARPASSTYP="0" TYPTYPE="1" TYPE="DATA"/>
+   <source>method get_value.
+
+  field-symbols:
+    &lt;val&gt;  type any.
+
+  assign val-&gt;* to &lt;val&gt;.
+  pv_value = &lt;val&gt;.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="RELAY_FIELD_ENTRY" VERSION="1" LANGU="E" DESCRIPT="Internal Only - Do Not Use" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method relay_field_entry.
+
+  if screen_attributes-input is initial.
+    return.
+  endif.
+
+  data:
+    action_listener like line of action_listeners.
+
+  loop at action_listeners into action_listener.
+    action_listener-&gt;button_pressed( me ).
+  endloop.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="REMOVE_ACTION_LISTENER" VERSION="1" LANGU="E" DESCRIPT="REMOVE_ACTION_LISTENER" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="REMOVE_ACTION_LISTENER" SCONAME="PO_ACTION_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130406" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method remove_action_listener.
+
+  delete action_listeners where table_line eq po_action_listener.
+
+  if action_listeners is initial.
+    zcl_ucomm_dispatcher=&gt;remove_screenfield_listener( me ).
+    clear listener_active.
+  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_INTENSIFIED" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_INTENSIFIED" SCONAME="PV_IS_INTENSIFIED" VERSION="1" LANGU="E" DESCRIPT="Checkbox" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SCREEN-INTENSIFIED"/>
+   <source>method SET_INTENSIFIED .
+  if pv_is_intensified is initial.
+    clear screen_attributes-intensified.
+  else.
+    screen_attributes-intensified = 1.
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_INVISIBLE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_INVISIBLE" SCONAME="PV_IS_INVISIBLE" VERSION="1" LANGU="E" DESCRIPT="or xfeld for value restriction?" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ABAP_BOOL"/>
+   <source>method set_invisible.
+  if pv_is_invisible is initial.
+    clear screen_attributes-invisible.
+  else.
+    screen_attributes-invisible = &apos;1&apos;.
+  endif.
+
+  att_changed = &apos;X&apos;.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_IS_INPUT" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_IS_INPUT" SCONAME="PV_IS_INPUT" VERSION="1" LANGU="E" DESCRIPT="or xfeld for value restriction?" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ABAP_BOOL"/>
+   <source>method set_is_input.
+  if pv_is_input is initial.
+    clear screen_attributes-input.
+  else.
+    screen_attributes-input = &apos;1&apos;.
+  endif.
+
+  att_changed = &apos;X&apos;.
+
+  endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_REQUIRED" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="12 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_REQUIRED" SCONAME="PV_IS_REQUIRED" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ABAP_BOOL"/>
+   <source>method SET_REQUIRED .
+  if pv_is_required is initial.
+    clear screen_attributes-required.
+  else.
+    screen_attributes-required = 1.
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_SCREEN_ATTRIBUTES" SCONAME="PV_SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" DESCRIPT="Structure Description for the System Data Object SCREEN" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDON="00000000" PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="SCREEN"/>
+   <source>method set_screen_attributes.
+  if att_changed eq &apos;X&apos;.
+    pv_screen_attributes-invisible = screen_attributes-invisible.
+    pv_screen_attributes-input = screen_attributes-input.
+*    pv_screen_attributes = screen_attributes.
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_VALUE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFIELD" CMPNAME="SET_VALUE" SCONAME="PV_DATA_TO_DISPLAY" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA"/>
+   <source>method set_value.
+
+  &quot;Check data is a type compatible for this screen field (c or n or f etc).
+
+  data:
+    valueref  type ref to data.
+
+  create data valueref like pv_data_to_display.
+
+  val = valueref.
+
+  field-symbols:
+    &lt;val&gt;  type any.
+
+  assign val-&gt;* to &lt;val&gt;.
+  &lt;val&gt; = pv_data_to_display.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

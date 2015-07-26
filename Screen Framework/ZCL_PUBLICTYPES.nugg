@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_PUBLICTYPES">
+ <CLAS CLSNAME="ZCL_PUBLICTYPES" VERSION="1" LANGU="E" DESCRIPT="This is for types that need to be public(not allowed in 4.7)" UUID="3C3C44D20FA2F24A95B6D961FB3FE694" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130107" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_UCOMM" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="6 " SRCCOLUMN2="34 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_TABS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="7 " SRCCOLUMN1="4 " SRCROW2="7 " SRCCOLUMN2="46 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_D021S" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="8 " SRCCOLUMN1="4 " SRCROW2="8 " SRCCOLUMN2="32 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_APP_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130314" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="54 "/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="OBJECT" FRIENDTYPE="0" VERSION="1" STATE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_APP_TOOLBAR" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_FRAME_TOOLBAR" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_SCREEN" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_SCREENFRAME" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130314" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_TABSTRIP" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_PUBLICTYPES definition
+  public
+  final
+  create public
+
+  global friends ZCL_APP_TOOLBAR
+                 ZCL_FRAME_TOOLBAR
+                 ZCL_SCREEN
+                 ZCL_SCREENFRAME
+                 ZCL_TABSTRIP .
+
+*&quot;* public components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!
+public section.</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!
+private section.
+
+  types:
+    tyt_ucomm type table of syucomm,
+    tyt_tabs type table of ref to zcl_tabbutton,
+    tyt_d021s type table of d021s,
+    tyt_app_buttons type table of ref to zcl_app_button.</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <inheritance CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="OBJECT" VERSION="1" STATE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+ </CLAS>
+ <CLAS CLSNAME="ZCL_PUBLICTYPES" VERSION="1" LANGU="E" DESCRIPT="This is for types that need to be public(not allowed in 4.7)" UUID="3C3C44D20FA2F24A95B6D961FB3FE694" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130107" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_UCOMM" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="6 " SRCCOLUMN2="34 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_TABS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="7 " SRCCOLUMN1="4 " SRCROW2="7 " SRCCOLUMN2="46 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_D021S" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="8 " SRCCOLUMN1="4 " SRCROW2="8 " SRCCOLUMN2="32 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_APP_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130314" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="54 "/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="OBJECT" FRIENDTYPE="0" VERSION="1" STATE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_APP_TOOLBAR" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_FRAME_TOOLBAR" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_SCREEN" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_SCREENFRAME" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130314" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_TABSTRIP" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_PUBLICTYPES definition
+  public
+  final
+  create public
+
+  global friends ZCL_APP_TOOLBAR
+                 ZCL_FRAME_TOOLBAR
+                 ZCL_SCREEN
+                 ZCL_SCREENFRAME
+                 ZCL_TABSTRIP .
+
+*&quot;* public components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!
+public section.</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!
+private section.
+
+  types:
+    tyt_ucomm type table of syucomm,
+    tyt_tabs type table of ref to zcl_tabbutton,
+    tyt_d021s type table of d021s,
+    tyt_app_buttons type table of ref to zcl_app_button.</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <inheritance CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="OBJECT" VERSION="1" STATE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+ </CLAS>
+ <CLAS CLSNAME="ZCL_PUBLICTYPES" VERSION="1" LANGU="E" DESCRIPT="This is for types that need to be public(not allowed in 4.7)" UUID="3C3C44D20FA2F24A95B6D961FB3FE694" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130107" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_UCOMM" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="6 " SRCCOLUMN2="34 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_TABS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="7 " SRCCOLUMN1="4 " SRCROW2="7 " SRCCOLUMN2="46 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_D021S" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="8 " SRCCOLUMN1="4 " SRCROW2="8 " SRCCOLUMN2="32 "/>
+  <types CLSNAME="ZCL_PUBLICTYPES" CMPNAME="TYT_APP_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130314" CHANGEDBY="ITAJR" CHANGEDON="20130314" TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="54 "/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="OBJECT" FRIENDTYPE="0" VERSION="1" STATE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_APP_TOOLBAR" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_FRAME_TOOLBAR" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_SCREEN" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_SCREENFRAME" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130314" CHANGEDON="00000000"/>
+  <friends CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="ZCL_TABSTRIP" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_PUBLICTYPES definition
+  public
+  final
+  create public
+
+  global friends ZCL_APP_TOOLBAR
+                 ZCL_FRAME_TOOLBAR
+                 ZCL_SCREEN
+                 ZCL_SCREENFRAME
+                 ZCL_TABSTRIP .
+
+*&quot;* public components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!
+public section.</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_PUBLICTYPES
+*&quot;* do not include other source files here!!!
+private section.
+
+  types:
+    tyt_ucomm type table of syucomm,
+    tyt_tabs type table of ref to zcl_tabbutton,
+    tyt_d021s type table of d021s,
+    tyt_app_buttons type table of ref to zcl_app_button.</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <inheritance CLSNAME="ZCL_PUBLICTYPES" REFCLSNAME="OBJECT" VERSION="1" STATE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+ </CLAS>
+</nugget>

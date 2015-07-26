@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_TABSTRIP">
+ <CLAS CLSNAME="ZCL_TABSTRIP" VERSION="1" LANGU="E" DESCRIPT="Holds array of tabs" UUID="08BA5B16D3213941BC6B7430FC2CE08A" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130116" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <types CLSNAME="ZCL_TABSTRIP" CMPNAME="TYT_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130307" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="6 " SRCCOLUMN2="59 " R3RELEASE="620"/>
+  <types CLSNAME="ZCL_TABSTRIP" CMPNAME="TYS_TAB" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="17 " R3RELEASE="620"/>
+  <types CLSNAME="ZCL_TABSTRIP" CMPNAME="TYT_TABS" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" TYPTYPE="4" SRCROW1="11 " SRCCOLUMN1="4 " SRCROW2="11 " SRCCOLUMN2="33 " R3RELEASE="620"/>
+  <implementing CLSNAME="ZCL_TABSTRIP" REFCLSNAME="ZIF_BUTTON_ACTION_LISTENER" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" RELTYPE="1"/>
+  <publicSection>class ZCL_TABSTRIP definition
+  public
+  final
+  create public .
+
+*&quot;* public components of class ZCL_TABSTRIP
+*&quot;* do not include other source files here!!!
+public section.
+
+  interfaces ZIF_BUTTON_ACTION_LISTENER .
+
+  data NAME type D021S-FNAM read-only .
+  data SCREENNAME type D021S-FNAM read-only .
+
+  methods APPEND_TAB
+    importing
+      !PO_TAB type ref to ZCL_TABBUTTON .
+  type-pools CXTAB .
+  methods CONSTRUCTOR
+    importing
+      !PV_NAME type D021S-FNAM
+      !PS_CONTROL type ref to CXTAB_TABSTRIP
+      !PV_NUMBEROFTABS type N
+      !PV_SCREENNAME type D021S-FNAM .
+  methods PBO .
+  methods MODIFY_SCREENATTRIBUTES
+    changing
+      !PT_D021S type ZCL_PUBLICTYPES=&gt;TYT_D021S .
+  methods REMOVE_TAB
+    importing
+      !PO_TAB type ref to ZCL_TABBUTTON .
+  methods GET_TAB
+    importing
+      !PV_TAB_INDEX type I
+    returning
+      value(PO_TAB) type ref to ZCL_TABBUTTON .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_TABSTRIP
+*&quot;* do not include other source files here!!!
+
+  types:
+    begin of tys_tab,
+      tab   type ref to zcl_tabbutton,
+      ucomm type syucomm,
+    end of tys_tab,
+
+    tyt_tabs type table of tys_tab.</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_TABSTRIP
+*&quot;* do not include other source files here!!!
+private section.
+
+  types:
+    TYT_LISTENERS type table of ref to lcl_tabactionlistener .
+
+  data ACTIVETAB type ref to ZCL_TABBUTTON .
+  type-pools CXTAB .
+  data CONTROL type ref to CXTAB_TABSTRIP .
+  data SCR type ref to ZCL_SUBSCREENAREA .
+  data TABS type ref to DATA .
+  data T_LISTENERS type TYT_LISTENERS .
+
+  methods CONSTRUCTOR620
+    importing
+      !PV_NAME type D021S-FNAM
+      !PS_CONTROL type ref to CXTAB_TABSTRIP
+      !PV_NUMBEROFTABS type N
+      !PV_SCREENNAME type D021S-FNAM .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations
+
+class lcl_tabactionlistener implementation.
+
+  method set_tabbutton_actor.
+    tabbutton_actor = po_tabbutton_actor.
+  endmethod.
+
+  method zif_ucomm_action_listener~action_raised.
+    tabbutton_actor-&gt;action_raised( ).
+  endmethod.
+
+endclass.</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section
+
+class lcl_tabactionlistener definition.
+
+  public section.
+
+    interfaces:
+      zif_ucomm_action_listener.
+
+    data:
+      ucomm type syucomm.
+
+    methods:
+      set_tabbutton_actor
+        importing
+          po_tabbutton_actor type ref to zif_ucomm_action_listener. &quot;Could use zcl_tabbutton instead.
+
+  private section.
+
+    data:
+      tabbutton_actor type ref to zif_ucomm_action_listener.
+
+endclass.</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <typeUsage CLSNAME="ZCL_TABSTRIP" TYPEGROUP="CXTAB" VERSION="1" TPUTYPE="0" IMPLICIT="X"/>
+  <forwardDeclaration>CXTAB</forwardDeclaration>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="ACTIVETAB" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_TABBUTTON" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="CONTROL" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CXTAB_TABSTRIP" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="Screen defined name" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130206" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="SCR" VERSION="1" LANGU="E" DESCRIPT="Encapsultes a subscreen container" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_SUBSCREENAREA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Instance screen name" EXPOSURE="2" STATE="1" EDITORDER="7 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDON="00000000" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="TABS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="DATA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABSTRIP" CMPNAME="T_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="TYT_LISTENERS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <interfaceMethod CLSNAME="ZCL_TABSTRIP" CPDNAME="ZIF_BUTTON_ACTION_LISTENER~BUTTON_PRESSED">
+   <source>method zif_button_action_listener~button_pressed.
+
+  activetab ?= po_originator.
+  scr = activetab-&gt;get_screenarea( ).
+*  control-&gt;activetab = activetab-&gt;ucomm. Only if given unique control variable in z_screens functiongroup.
+
+endmethod.</source>
+  </interfaceMethod>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="APPEND_TAB" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="APPEND_TAB" SCONAME="PO_TAB" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_TABBUTTON"/>
+   <source>method append_tab.
+
+  data:
+    lo_listener type ref to lcl_tabactionlistener.
+
+  field-symbols:
+    &lt;tab&gt;   type ref to object,
+    &lt;tabs&gt;  type any.
+
+
+  assign tabs-&gt;* to &lt;tabs&gt;.
+
+  do.
+    assign component sy-index of structure &lt;tabs&gt; to &lt;tab&gt;.
+    if sy-subrc eq 0.
+      if &lt;tab&gt; is initial.
+
+        &lt;tab&gt; = po_tab.
+        po_tab-&gt;add_action_listener( me ).
+
+        read table t_listeners index sy-index into lo_listener.
+        lo_listener-&gt;set_tabbutton_actor( po_tab ).
+
+        if sy-index eq 1.
+          activetab = po_tab.
+          scr = activetab-&gt;get_screenarea( ).
+        endif.
+
+        exit.
+
+      else.
+        continue.
+      endif.
+    else.
+      exit.
+    endif.
+  enddo.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR" SCONAME="PV_NAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR" SCONAME="PS_CONTROL" VERSION="1" LANGU="E" DESCRIPT="Screen fields" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CXTAB_TABSTRIP"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR" SCONAME="PV_NUMBEROFTABS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="N"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR" SCONAME="PV_SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="2" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <source>method constructor.
+
+*  data:
+*    tabnum                type n length 1,
+*    lo_tabactionlistener  type ref to lcl_tabactionlistener,
+*    components            type abap_component_tab, component like line of components,
+*    obj                   type ref to object.
+
+  if sy-saprl &lt; 700. &quot;//TODO confirm version that create structure method is available.
+    constructor620(
+      pv_name = pv_name
+      pv_screenname = pv_screenname
+      ps_control = ps_control
+      pv_numberoftabs = pv_numberoftabs ).
+  endif.
+
+*  name = pv_name.
+*  screenname = pv_screenname.
+*  control = ps_control.
+*
+*  component-type ?= cl_abap_datadescr=&gt;describe_by_data( obj ).
+*
+*  do pv_numberoftabs times.
+*
+*    add 1 to tabnum.
+*
+*    concatenate &apos;T&apos; tabnum into component-name.
+*    append component to components.
+*
+*    create object lo_tabactionlistener.
+*    lo_tabactionlistener-&gt;ucomm = zcl_ucomm_dispatcher=&gt;add_listener( lo_tabactionlistener ).
+*    append lo_tabactionlistener to t_listeners.
+*
+*  enddo.
+*
+*  create object scr
+*    exporting
+*      pv_name = &apos;SCR&apos;.
+*
+** Create dynamic structure to hold tabs, so that the screen can reference their labels.
+*  data:
+*    structype type ref to cl_abap_structdescr.
+*
+*  structype = cl_abap_structdescr=&gt;create( components ).
+*  create data tabs type handle structype.
+*
+** Assign inital components into the newly created dynamic structure?
+
+
+
+
+**        data:
+**          lt_tabs type table of ref to zcl_tabbutton.
+*
+**        clear lt_tabs.
+*
+*        do.
+*          add 1 to tabix.
+*          read table pt_scr_element_names index tabix into ls_subelem.
+*          if ls_subelem-ltyp ne &apos;I&apos;.
+*            subtract 1 from tabix.
+*            exit.
+*          endif.
+*
+*          case ls_subelem-fill.
+*
+*            when c_pushbutton.
+**          *********************************************************
+*              condense ls_subelem-res1.
+*
+*              create object lo_tab
+*                exporting
+*                  pv_name  = ls_subelem-fnam
+*                  pv_ucomm = ls_subelem-res1.
+*
+*              lo_tab-&gt;set_label( ls_subelem-fnam ).
+*
+*              append lo_tab to lt_tabs.
+*              append lo_tab to t_elements.
+*
+*              component-name = ls_subelem-fnam.
+*              append component to components.
+*
+*              assign component ls_subelem-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*              if sy-subrc eq 0.
+*                &lt;p_element&gt; = lo_tab.
+*              endif.
+*
+*            when c_subscreenarea.
+**          *********************************************************
+*              create object lo_screen_area
+*                exporting
+*                  pv_name = ls_subelem-fnam.
+*
+*              append lo_screen_area to t_elements.
+*
+*              component-name = ls_subelem-fnam.
+**              read table pt_scr_element_symbols index lv_tabix into ls_element_symbols.
+**              component-name = ls_element_symbols-fnam.
+*              append component to components.
+*
+*              assign component ls_subelem-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*              if sy-subrc eq 0.
+*                &lt;p_element&gt; = lo_screen_area.
+*              endif.
+*
+*          endcase.
+*
+*        enddo.
+*
+*        create object lo_tabstrip
+*          exporting
+*            pv_name          = ls_element_names-fnam
+*            pv_control       = ls_element_names-fnam
+*            pt_tabs          = lt_tabs
+*            po_subscreenarea = lo_screen_area.
+*
+*        append lo_tabstrip to t_elements.
+*
+*        component-name = ls_element_names-fnam.
+*        append component to components.
+*
+*        assign component ls_element_names-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*        if sy-subrc eq 0.
+*          &lt;p_element&gt; = lo_tabstrip.
+*        endif.
+**        catch wrong type exception.
+**        can be skipped and resumed if caught.
+**        IF sy-subrc &lt;&gt; 0.
+**
+**        ENDIF.
+*
+**        catch system-exceptions MOVE_TO_LIT_NOTALLOWED_NODATA = 5.
+**
+**        endcatch.
+**
+**        TRY.
+**          &lt;p_element&gt; = lo_tabstrip.
+**        CATCH system-exceptions MOVE_TO_LIT_NOTALLOWED_NODATA.
+**
+**        ENDTRY.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR620" VERSION="1" LANGU="E" DESCRIPT="Constructor compatible with SAP version 620" EXPOSURE="0" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR620" SCONAME="PV_NAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDBY="ITAJR" CHANGEDON="20130206" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR620" SCONAME="PS_CONTROL" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDBY="ITAJR" CHANGEDON="20130206" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CXTAB_TABSTRIP"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR620" SCONAME="PV_NUMBEROFTABS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDBY="ITAJR" CHANGEDON="20130206" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="N"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="CONSTRUCTOR620" SCONAME="PV_SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDBY="ITAJR" CHANGEDON="20130206" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <source>method constructor620.
+
+  types:
+    begin of tys_tabs,
+      t01 type ref to object,
+      t02 type ref to object,
+      t03 type ref to object,
+      t04 type ref to object,
+      t05 type ref to object,
+      t06 type ref to object,
+      t07 type ref to object,
+      t08 type ref to object,
+      t09 type ref to object,
+      t10 type ref to object,
+    end of tys_tabs.
+
+  data:
+    screenname  type d021s-fnam,
+*    tabnum                type n length 1,
+    lo_tabactionlistener  type ref to lcl_tabactionlistener.&quot;,
+*    components            type abap_component_tab, component like line of components,
+*    obj                   type ref to object.
+
+
+
+  name = pv_name.
+  screenname = pv_screenname.
+  control = ps_control.
+
+
+*  concatenate
+
+  create object scr
+    exporting
+      pv_name = &apos;SCR&apos;
+      pv_screenname = &apos;SCR&apos;.
+
+
+*  component-type ?= cl_abap_datadescr=&gt;describe_by_data( obj ).
+
+  do pv_numberoftabs times.
+
+*    add 1 to tabnum.
+
+*    concatenate &apos;T&apos; tabnum into component-name.
+*    append component to components.
+
+    create object lo_tabactionlistener.
+    lo_tabactionlistener-&gt;ucomm = zcl_ucomm_dispatcher=&gt;add_listener( lo_tabactionlistener ).
+    append lo_tabactionlistener to t_listeners.
+
+  enddo.
+
+
+  create data tabs type tys_tabs.
+
+** Create dynamic structure to hold tabs, so that the screen can reference their labels.
+*  data:
+*    structype type ref to cl_abap_structdescr.
+*
+*  structype = cl_abap_structdescr=&gt;create( components ).
+*  create data tabs type handle structype.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="GET_TAB" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130307" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="GET_TAB" SCONAME="PV_TAB_INDEX" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130307" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I"/>
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="GET_TAB" SCONAME="PO_TAB" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130307" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_TABBUTTON"/>
+   <source>method get_tab.
+
+  data:
+    lo_listener type ref to lcl_tabactionlistener.
+
+  field-symbols:
+    &lt;tab&gt;   type ref to object,
+    &lt;tabs&gt;  type any.
+
+
+  assign tabs-&gt;* to &lt;tabs&gt;.
+
+  assign component pv_tab_index of structure &lt;tabs&gt; to &lt;tab&gt;.
+  if sy-subrc eq 0.
+    po_tab ?= &lt;tab&gt;.
+  else.
+    &quot;//TODO raise no tab available for index error.
+    clear po_tab.
+  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="MODIFY_SCREENATTRIBUTES" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130206" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="MODIFY_SCREENATTRIBUTES" SCONAME="PT_D021S" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="ZCL_PUBLICTYPES=&gt;TYT_D021S"/>
+   <source>method MODIFY_SCREENATTRIBUTES .
+
+  data:
+    tabnum      type n length 1,
+    ls_listener type ref to lcl_tabactionlistener.
+
+  field-symbols:
+    &lt;s_d021s&gt; like line of pt_d021s.
+
+
+  loop at pt_d021s assigning &lt;s_d021s&gt;.
+    if &lt;s_d021s&gt;-fill eq &apos;P&apos;. &quot;Pushbutton Type
+      add 1 to tabnum.
+      read table t_listeners index tabnum into ls_listener.
+      &lt;s_d021s&gt;-res1 = ls_listener-&gt;ucomm.
+      shift &lt;s_d021s&gt;-res1 right by 168 places. &quot;Must be placed here to be picked up.
+    endif.
+  endloop.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="PBO" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pbo.
+
+  data:
+    lo_listener type ref to lcl_tabactionlistener,
+    lo_tab      type ref to zcl_tabbutton,
+    t_tabs      type table of ref to zcl_tabbutton.
+
+  field-symbols:
+    &lt;tab&gt;   type ref to object,
+    &lt;tabs&gt;  type any.
+
+
+  assign tabs-&gt;* to &lt;tabs&gt;.
+
+  do.
+    assign component sy-index of structure &lt;tabs&gt; to &lt;tab&gt;.
+    if sy-subrc eq 0.
+      lo_tab ?= &lt;tab&gt;.
+      if lo_tab is not initial.
+        append lo_tab to t_tabs.
+      endif.
+      if &lt;tab&gt; eq activetab.
+        read table t_listeners index sy-index into lo_listener.
+        control-&gt;activetab = lo_listener-&gt;ucomm.
+      else.
+        continue.
+      endif.
+    else.
+      exit.
+    endif.
+  enddo.
+
+  loop at screen.
+
+    read table t_tabs with key table_line-&gt;screenfname = screen-name into lo_tab.
+    if sy-subrc eq 0.
+      lo_tab-&gt;set_screen_attributes( changing pv_screen_attributes = screen ).
+      modify screen.
+    endif.
+
+  endloop.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABSTRIP" CMPNAME="REMOVE_TAB" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABSTRIP" CMPNAME="REMOVE_TAB" SCONAME="PO_TAB" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_TABBUTTON"/>
+   <source>method remove_tab.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

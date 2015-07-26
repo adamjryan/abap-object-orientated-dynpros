@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_TABBUTTON">
+ <CLAS CLSNAME="ZCL_TABBUTTON" VERSION="1" LANGU="E" UUID="051420DBC96E2748BDF105C200B41F5E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130112" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <implementing CLSNAME="ZCL_TABBUTTON" REFCLSNAME="ZIF_UCOMM_ACTION_LISTENER" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" RELTYPE="1"/>
+  <publicSection>class ZCL_TABBUTTON definition
+  public
+  create public .
+
+*&quot;* public components of class ZCL_TABBUTTON
+*&quot;* do not include other source files here!!!
+public section.
+
+  interfaces ZIF_UCOMM_ACTION_LISTENER .
+
+  data LABEL type STRING .
+  data NAME type D021S-FNAM .
+  data SCREEN type ref to ZCL_SCREEN .
+  data UCOMM type D021S-RES1 .
+  data SCREENFNAME type D021S-FNAM .
+
+  methods CONSTRUCTOR
+    importing
+      !PV_NAME type D021S-FNAM
+      !PV_LABEL type ref to DATA optional
+      !PV_SCREENNAME type D021S-FNAM .
+  methods SET_LABEL
+    importing
+      !PV_LABEL type C .
+  methods SET_SCREEN
+    importing
+      !PO_SCREEN type ref to ZCL_SCREEN .
+  methods ADD_ACTION_LISTENER
+    importing
+      !PO_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods GET_SCREENAREA
+    returning
+      value(PO_SCREENAREA) type ref to ZCL_SUBSCREENAREA .
+  methods SET_INVISIBLE
+    importing
+      !PV_IS_INVISIBLE type FLAG .
+  methods SET_SCREEN_ATTRIBUTES
+    changing
+      value(PV_SCREEN_ATTRIBUTES) type SCREEN .
+  methods GET_INVISIBLE
+    returning
+      value(PV_IS_INVISIBLE) type FLAG .
+  methods GET_LABEL
+    returning
+      value(PV_LABEL) type CHAR70 .
+  methods GET_SCREEN
+    returning
+      value(PO_SCREEN) type ref to ZCL_SCREEN .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_TABBUTTON
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_TABBUTTON
+*&quot;* do not include other source files here!!!
+private section.
+
+  data:
+    ACTION_LISTENERS type table of ref to zif_button_action_listener .
+  data SCREENAREA type ref to ZCL_SUBSCREENAREA .
+  data SCREENNAME type D021S-FNAM .
+  data SCREEN_ATTRIBUTES type SCREEN .
+  data ATT_CHANGED type FLAG .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="ACTION_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130403" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="6 " SRCCOLUMN2="67 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="ATT_CHANGED" VERSION="1" LANGU="E" DESCRIPT="General Flag" EXPOSURE="0" STATE="1" EDITORDER="9 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="LABEL" VERSION="1" LANGU="E" DESCRIPT="LABEL" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="NAME" EXPOSURE="2" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="SCREEN" VERSION="1" LANGU="E" DESCRIPT="SUBSCREEN" EXPOSURE="2" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_SCREEN" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="SCREENAREA" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_SUBSCREENAREA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="SCREENFNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="2" STATE="1" EDITORDER="10 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="0" STATE="1" EDITORDER="7 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="8 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SCREEN" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_TABBUTTON" CMPNAME="UCOMM" VERSION="1" LANGU="E" DESCRIPT="UCOMM" EXPOSURE="2" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-RES1" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <interfaceMethod CLSNAME="ZCL_TABBUTTON" CPDNAME="ZIF_UCOMM_ACTION_LISTENER~ACTION_RAISED">
+   <source>method ZIF_UCOMM_ACTION_LISTENER~ACTION_RAISED .
+
+  data:
+    lo_action_listener  like line of action_listeners.
+
+  loop at action_listeners into lo_action_listener.
+    lo_action_listener-&gt;button_pressed( me ).
+  endloop.
+
+endmethod.</source>
+  </interfaceMethod>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="ADD_ACTION_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="ADD_ACTION_LISTENER" SCONAME="PO_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method ADD_ACTION_LISTENER .
+  append po_listener to action_listeners.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_NAME" VERSION="1" LANGU="E" DESCRIPT="PV_NAME" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_LABEL" VERSION="1" LANGU="E" DESCRIPT="PV_LABEL" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="DATA" PAROPTIONL="X"/>
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <source>method constructor .
+
+  name = pv_name.
+  screenname = pv_screenname.
+*  ucomm = pv_ucomm.
+
+  create object screenarea
+    exporting
+      pv_name = &apos;sub&apos;
+      pv_screenname = &apos;sub&apos;.
+
+*  control-&gt;activetab = activetab-&gt;ucomm.
+**   ACTIVETAB         Types   CHAR  132
+**   %_SCROLLPOSITION  Types   CHAR  132
+**   INVISIBLE         Types   CHAR  1 TODO check whether setting this has an effect.
+*
+** NOTES
+** The tabstrip control variable must be accessed in order for it to be generated
+** and for the tabstrip to show on the screen.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_INVISIBLE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130307" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_INVISIBLE" SCONAME="PV_IS_INVISIBLE" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130307" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+   <source>method get_invisible.
+
+  if screen_attributes-invisible is initial.
+    clear pv_is_invisible.
+  else.
+    pv_is_invisible = &apos;X&apos;.
+  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_LABEL" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130309" CHANGEDBY="ITAJR" CHANGEDON="20130309" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_LABEL" SCONAME="PV_LABEL" VERSION="1" LANGU="E" DESCRIPT="Character field, length 70" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130309" CHANGEDBY="ITAJR" CHANGEDON="20130309" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="CHAR70"/>
+   <source>method get_label.
+  pv_label = label.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_SCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130403" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_SCREEN" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" DESCRIPT="Links function group screen to object" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130403" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method get_screen.
+  po_screen = screen.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_SCREENAREA" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="GET_SCREENAREA" SCONAME="PO_SCREENAREA" VERSION="1" LANGU="E" DESCRIPT="Encapsultes a subscreen container" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_SUBSCREENAREA"/>
+   <source>method get_screenarea.
+  po_screenarea = screenarea.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_INVISIBLE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_INVISIBLE" SCONAME="PV_IS_INVISIBLE" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG"/>
+   <source>method set_invisible.
+  if pv_is_invisible is initial.
+    clear screen_attributes-invisible.
+    att_changed = &apos;X&apos;.
+  else.
+    screen_attributes-invisible = &apos;1&apos;.
+    att_changed = &apos;X&apos;.
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_LABEL" VERSION="1" LANGU="E" DESCRIPT="SET_LABEL" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_LABEL" SCONAME="PV_LABEL" VERSION="1" LANGU="E" DESCRIPT="PV_LABEL" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="C"/>
+   <source>method set_label.
+  label = pv_label.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_SCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_SCREEN" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method set_screen.
+
+  screen = po_screen.
+  screenarea-&gt;set_subscreen( po_screen ).
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_TABBUTTON" CMPNAME="SET_SCREEN_ATTRIBUTES" SCONAME="PV_SCREEN_ATTRIBUTES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="2" PARPASSTYP="0" TYPTYPE="1" TYPE="SCREEN"/>
+   <source>method set_screen_attributes.
+  if att_changed eq &apos;X&apos;.
+    pv_screen_attributes-invisible =  screen_attributes-invisible.
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

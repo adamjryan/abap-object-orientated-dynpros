@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_UCOMM_DISPATCHER">
+ <CLAS CLSNAME="ZCL_UCOMM_DISPATCHER" VERSION="1" LANGU="E" UUID="C8792B409A072440847F70C32166BBB3" CATEGORY="00" EXPOSURE="0" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20121231" CHANGEDBY="ITAJR" CHANGEDON="20130407" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" RSTAT="S" R3RELEASE="620" CLSBCCAT="00">
+  <types CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="TYS_UCOMMREF" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130406" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="20 "/>
+  <types CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="TYT_UCOMMREFS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" TYPTYPE="4" SRCROW1="11 " SRCCOLUMN1="4 " SRCROW2="11 " SRCCOLUMN2="43 "/>
+  <publicSection>class ZCL_UCOMM_DISPATCHER definition
+  public
+  final
+  create private .
+
+*&quot;* public components of class ZCL_UCOMM_DISPATCHER
+*&quot;* do not include other source files here!!!
+public section.
+
+  class-methods PAI .
+  methods CONSTRUCTOR .
+  class-methods PBO .
+  class-methods ADD_LISTENER
+    importing
+      !PO_UCOMM_LISTENER type ref to ZIF_UCOMM_ACTION_LISTENER
+    returning
+      value(PV_UCOMM) type SYUCOMM .
+  class-methods ADD_TOOLBARLISTENER
+    importing
+      !PO_UCOMM_LISTENER type ref to ZIF_UCOMM_ACTION_LISTENER
+      !PV_UCOMM type SYUCOMM .
+  class-methods REGISTER_SELECTIONSCREEN
+    importing
+      !PO_SELECTIONSCREEN type ref to ZCL_SELECTIONSCREEN .
+  class-methods ADD_SCREENFIELD_LISTENER
+    importing
+      !PO_UCOMM_LISTENER type ref to ZCL_SCREENFIELD .
+  class-methods REMOVE_TOOLBARLISTENER
+    importing
+      !PO_UCOMM_LISTENER type ref to ZIF_UCOMM_ACTION_LISTENER optional
+      !PV_UCOMM type SYUCOMM optional .
+  class-methods REMOVE_SCREENFIELD_LISTENER
+    importing
+      !PO_UCOMM_LISTENER type ref to ZCL_SCREENFIELD .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_UCOMM_DISPATCHER
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_UCOMM_DISPATCHER
+*&quot;* do not include other source files here!!!
+private section.
+
+  types:
+    begin of tys_ucommref,
+    ucomm   type syucomm,
+    object  type ref to zif_ucomm_action_listener,
+  end of tys_ucommref .
+  types:
+    tyt_ucommrefs type table of tys_ucommref .
+
+  class-data OK_CODE type SYUCOMM .
+  class-data SYUCOMM type SYUCOMM .
+  class-data:
+    NEXT_UCOMM type n length 3 .
+  class-data:
+    t_listeners type table of ref to zif_ucomm_action_listener .
+  class-data T_UCOMMREFS type TYT_UCOMMREFS .
+  class-data PBO_COMPLETE type XFELD .
+  class-data PAI_COMPLETE type XFELD .
+  class-data:
+    T_SELECTIONSCREENS type table of ref to zcl_selectionscreen .
+  class-data SCREENFIELD_ENTRY type D021S-FNAM .
+  class-data:
+    T_FIELDLISTENERS type table of ref to zcl_screenfield .
+  class-data CURSOR_DYNNR type DYNNR .
+  class-data CURSOR_FIELD type D021S-FNAM .
+
+  class-methods GET_NEW_UCOMM
+    returning
+      value(PV_UCOMM) type SYUCOMM .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="CURSOR_DYNNR" VERSION="1" LANGU="E" DESCRIPT="Number of the following screen" EXPOSURE="0" STATE="1" EDITORDER="11 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DYNNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="CURSOR_FIELD" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="0" STATE="1" EDITORDER="12 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="NEXT_UCOMM" VERSION="1" LANGU="E" DESCRIPT="NEXT_UCOMM" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130406" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="16 " SRCCOLUMN1="4 " SRCROW2="16 " SRCCOLUMN2="29 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="OK_CODE" VERSION="1" LANGU="E" DESCRIPT="OK_CODE" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SYUCOMM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="PAI_COMPLETE" VERSION="1" LANGU="E" DESCRIPT="Checkbox" EXPOSURE="0" STATE="1" EDITORDER="7 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="XFELD" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="PBO_COMPLETE" VERSION="1" LANGU="E" DESCRIPT="Checkbox" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="XFELD" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="SCREENFIELD_ENTRY" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="0" STATE="1" EDITORDER="9 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="SYUCOMM" VERSION="1" LANGU="E" DESCRIPT="SYUCOMM" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SYUCOMM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="T_FIELDLISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="10 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130406" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="26 " SRCCOLUMN1="4 " SRCROW2="26 " SRCCOLUMN2="56 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="T_LISTENERS" VERSION="1" LANGU="E" DESCRIPT="T_LISTENERS" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130406" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="18 " SRCCOLUMN1="4 " SRCROW2="18 " SRCCOLUMN2="61 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="T_SELECTIONSCREENS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="8 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130406" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="23 " SRCCOLUMN1="4 " SRCROW2="23 " SRCCOLUMN2="62 "/>
+  <attribute CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="T_UCOMMREFS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="TYT_UCOMMREFS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_LISTENER" SCONAME="PO_UCOMM_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_UCOMM_ACTION_LISTENER"/>
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_LISTENER" SCONAME="PV_UCOMM" VERSION="1" LANGU="E" DESCRIPT="Function code that PAI triggered" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="SYUCOMM"/>
+   <source>method ADD_LISTENER .
+
+  data:
+    ls_ucommref like line of t_ucommrefs.
+
+  ls_ucommref-object = po_ucomm_listener. &quot;Should be weak reference.
+  ls_ucommref-ucomm = pv_ucomm = get_new_ucomm( ).
+
+  append ls_ucommref to t_ucommrefs.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_SCREENFIELD_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_SCREENFIELD_LISTENER" SCONAME="PO_UCOMM_LISTENER" VERSION="1" LANGU="E" DESCRIPT="Screen text element (label, input/output)" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SCREENFIELD"/>
+   <source>method add_screenfield_listener.
+
+  append po_ucomm_listener to t_fieldlisteners.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_TOOLBARLISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_TOOLBARLISTENER" SCONAME="PO_UCOMM_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_UCOMM_ACTION_LISTENER"/>
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="ADD_TOOLBARLISTENER" SCONAME="PV_UCOMM" VERSION="1" LANGU="E" DESCRIPT="Function code that PAI triggered" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SYUCOMM"/>
+   <source>method add_toolbarlistener.
+
+  data:
+    ls_ucommref like line of t_ucommrefs.
+
+
+  ls_ucommref-object = po_ucomm_listener. &quot;Should be weak reference.
+  ls_ucommref-ucomm = pv_ucomm.
+
+  append ls_ucommref to t_ucommrefs.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method CONSTRUCTOR .
+
+*NOTES
+* how is the ucomm code handled when a button on a screen that appears twice is pressed?
+* -is it cleared after the subscreen that it was pressed on is handled?
+
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="GET_NEW_UCOMM" VERSION="1" LANGU="E" DESCRIPT="GET_NEW_UCOMM" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="1" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="GET_NEW_UCOMM" SCONAME="PV_UCOMM" VERSION="1" LANGU="E" DESCRIPT="PV_UCOMM" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="SYUCOMM"/>
+   <source>method GET_NEW_UCOMM .
+
+  add 1 to next_ucomm.
+  concatenate &apos;U&apos; next_ucomm into pv_ucomm.
+*  pv_ucomm = &apos;U&apos; &amp;&amp; next_ucomm.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="PAI" VERSION="1" LANGU="E" DESCRIPT="SCREEN_PAI" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pai.
+
+  if syucomm is initial.
+    syucomm = sy-ucomm.
+  else.
+    if syucomm ne sy-ucomm.
+      &quot;something has changed it in pai, or was not properly cleared in last pbo.
+    endif.
+  endif.
+
+  data:
+    inp_out(20) type c,
+    field(90)   type c,
+    offset      type i,
+    line        type i,
+    value(20)   type c,
+    length      type i.
+
+  get cursor
+    field   field
+    offset  offset
+    line    line
+    value   value
+    length  length.
+
+  if syucomm eq &apos;ENTER&apos; and field is not initial.
+    screenfield_entry = field.
+    cursor_dynnr = sy-dynnr.
+  endif.
+
+  field-symbols:
+    &lt;ok_code&gt; type syucomm.
+
+  assign (&apos;(SAPLZ_SCREENS)ok_code&apos;) to &lt;ok_code&gt;.
+  if ok_code is initial.
+    ok_code = &lt;ok_code&gt;.
+  else.
+    if ok_code ne &lt;ok_code&gt;.
+      &quot;something has changed it in pai, or was not properly cleared in last pbo.
+    endif.
+  endif.
+
+
+
+  if ok_code ne syucomm.&quot;Then was not set by a screenframe screen. (subscreens don&apos;t recieve)
+    &quot;Or set by pf_status? - if this is the case then compare the pf_status codes
+    &quot;and if not matched then it must have been set by SAP standard. - Listeners can be set for these.
+  endif.
+
+
+
+  data:
+    lo_selectionscreen  type ref to zcl_selectionscreen.
+
+  read table t_selectionscreens with key table_line-&gt;screennumber = sy-dynnr into lo_selectionscreen.
+  if sy-subrc eq 0.
+    lo_selectionscreen-&gt;pai( ).
+  endif.
+
+
+
+  clear pbo_complete.
+
+*    data:
+*      lo_cfw  type ref to CL_GUI_CFW,
+*      lo_xyz  type ref to cl_gui_control.
+*    set handler screen_pai for SYSTEM-event.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="PBO" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pbo.
+
+  data:
+    ls_ucommref     like line of t_ucommrefs.
+
+  if pbo_complete is initial.
+
+    if syucomm is initial. &quot;If no pai was made.
+      syucomm = ok_code = sy-ucomm.
+    endif.
+
+    if screenfield_entry is not initial.
+
+      data lo_screenfield type ref to zcl_screenfield.
+
+      read table t_fieldlisteners with key table_line-&gt;screenfname = screenfield_entry
+      into lo_screenfield.
+      if sy-subrc eq 0.
+        lo_screenfield-&gt;relay_field_entry( ).
+      endif.
+
+      cursor_field = screenfield_entry.
+      clear screenfield_entry.
+
+    else.
+      loop at t_ucommrefs into ls_ucommref where ucomm = syucomm.
+        ls_ucommref-object-&gt;action_raised( ).
+      endloop.
+    endif.
+
+    clear ok_code.
+    clear syucomm.
+    clear sy-ucomm.
+
+    pbo_complete = &apos;X&apos;.
+    clear pai_complete.
+
+  endif.
+
+  if cursor_dynnr eq sy-dynnr.
+
+    data field(90) type c.
+    field = cursor_field.
+    set cursor field field.
+
+    clear cursor_field.
+    clear cursor_dynnr.
+
+  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REGISTER_SELECTIONSCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130306" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REGISTER_SELECTIONSCREEN" SCONAME="PO_SELECTIONSCREEN" VERSION="1" LANGU="E" DESCRIPT="Encapsulates selection screen code as a subscreen." CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SELECTIONSCREEN"/>
+   <source>method REGISTER_SELECTIONSCREEN .
+  append po_selectionscreen to t_selectionscreens.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REMOVE_SCREENFIELD_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130406" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REMOVE_SCREENFIELD_LISTENER" SCONAME="PO_UCOMM_LISTENER" VERSION="1" LANGU="E" DESCRIPT="Screen text element (label, input/output)" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130406" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SCREENFIELD"/>
+   <source>method remove_screenfield_listener.
+  delete t_fieldlisteners where table_line eq po_ucomm_listener.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REMOVE_TOOLBARLISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REMOVE_TOOLBARLISTENER" SCONAME="PO_UCOMM_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_UCOMM_ACTION_LISTENER" PAROPTIONL="X"/>
+   <parameter CLSNAME="ZCL_UCOMM_DISPATCHER" CMPNAME="REMOVE_TOOLBARLISTENER" SCONAME="PV_UCOMM" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SYUCOMM" PAROPTIONL="X"/>
+   <source>method remove_toolbarlistener.
+
+  delete table t_ucommrefs with table key ucomm = pv_ucomm.
+*  delete t_ucommrefs where object eq po_ucomm_listener.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

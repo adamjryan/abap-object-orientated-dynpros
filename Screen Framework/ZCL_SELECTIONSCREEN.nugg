@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_SELECTIONSCREEN">
+ <CLAS CLSNAME="ZCL_SELECTIONSCREEN" VERSION="1" LANGU="E" DESCRIPT="Encapsulates selection screen code as a subscreen." UUID="8D247975D9B069489C3557D56F7E03BF" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130310" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00" REFCLSNAME="ZCL_SCREEN">
+  <publicSection>class ZCL_SELECTIONSCREEN definition
+  public
+  inheriting from ZCL_SCREEN
+  create public .
+
+*&quot;* public components of class ZCL_SELECTIONSCREEN
+*&quot;* do not include other source files here!!!
+public section.
+
+  methods CONSTRUCTOR
+    importing
+      !PV_PROGRAM_OF_SELECTIONSCREEN type PROGNAME
+      !PV_SCREEN_NUMBER type DYNNR .
+  methods PBO .
+  methods PAI .
+  methods SET_LISTENER
+    importing
+      !PO_LISTENER type ref to ZIF_SELECTIONSCREEN_LISTENER .
+  methods GET_TOOLBAR_BUTTON
+    returning
+      value(PO_BUTTON) type ref to ZCL_APP_BUTTON .</publicSection>
+  <protectedSection>*&quot;* protected components of class ZCL_SELECTIONSCREEN
+*&quot;* do not include other source files here!!!
+protected section.
+
+  methods GET_ELEMENTS
+    redefinition .</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_SELECTIONSCREEN
+*&quot;* do not include other source files here!!!
+private section.
+
+  data SCREENAREA type ref to ZCL_SUBSCREENAREA .
+  data SELSCRGROUP type PROGNAME .
+  data SELSCRNUMBER type DYNNR .
+  data:
+    t_elements type table of ref to zcl_screenfield .
+  data CONSTRUCTOR_GET_ELEMENTS type FLAG value &apos;X&apos; .
+  data ENTRY_LISTENER type ref to ZIF_SELECTIONSCREEN_LISTENER .
+  data BTN_ENTER type ref to ZCL_APP_BUTTON .
+  data LSNR_BTN_ENTER type ref to LCL_LSNR_BTN_ENTER .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations
+
+
+
+*&amp;---------------------------------------------------------------------*
+*&amp;       Class (Implementation)  lcl_lsnr_btn_enter
+*&amp;---------------------------------------------------------------------*
+*        Text
+*----------------------------------------------------------------------*
+CLASS lcl_lsnr_btn_enter IMPLEMENTATION.
+
+  method constructor.
+
+
+
+  endmethod.
+
+
+  method set_lsnr_selection.
+
+    lsnr_selection = po_listener.
+
+  endmethod.
+
+
+  method zif_button_action_listener~button_pressed.
+
+    if lsnr_selection is not initial.
+      lsnr_selection-&gt;enter_btn_pressed( ).
+    endif.
+
+  endmethod.
+
+ENDCLASS.               &quot;lcl_lsnr_btn_enter</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section
+
+
+
+class lcl_lsnr_btn_enter definition.
+
+  public section.
+    methods:
+      constructor,
+      set_lsnr_selection
+            importing
+              po_listener type ref to zif_selectionscreen_listener.
+
+    interfaces:
+      zif_button_action_listener.
+
+  private section.
+    data:
+      lsnr_selection  type ref to zif_selectionscreen_listener.
+
+endclass.                    &quot;lcl_lsnr_btn_enter DEFINITION</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="BTN_ENTER" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar Button" EXPOSURE="0" STATE="1" EDITORDER="7 " AUTHOR="ITAJR" CREATEDON="20130405" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_APP_BUTTON" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="CONSTRUCTOR_GET_ELEMENTS" VERSION="1" LANGU="E" DESCRIPT="General Flag" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" ATTDECLTYP="0" ATTVALUE="&apos;X&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="ENTRY_LISTENER" VERSION="1" LANGU="E" DESCRIPT="Selection screen action listener" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZIF_SELECTIONSCREEN_LISTENER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="LSNR_BTN_ENTER" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="8 " AUTHOR="ITAJR" CREATEDON="20130405" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="LCL_LSNR_BTN_ENTER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="SCREENAREA" VERSION="1" LANGU="E" DESCRIPT="Encapsultes a subscreen container" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_SUBSCREENAREA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="SELSCRGROUP" VERSION="1" LANGU="E" DESCRIPT="SELSCRGROUP" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="PROGNAME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="SELSCRNUMBER" VERSION="1" LANGU="E" DESCRIPT="SELSCRNUMBER" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DYNNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="T_ELEMENTS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130405" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="50 "/>
+  <inheritance CLSNAME="ZCL_SELECTIONSCREEN" REFCLSNAME="ZCL_SCREEN" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130310">
+   <redefinition CLSNAME="ZCL_SELECTIONSCREEN" REFCLSNAME="ZCL_SCREEN" VERSION="1" MTDNAME="GET_ELEMENTS"/>
+  </inheritance>
+  <method CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="CONSTRUCTOR" SCONAME="PV_PROGRAM_OF_SELECTIONSCREEN" VERSION="1" LANGU="E" DESCRIPT="PV_PROGRAM_OF_SELECTIONSCREEN" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="PROGNAME"/>
+   <parameter CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="CONSTRUCTOR" SCONAME="PV_SCREEN_NUMBER" VERSION="1" LANGU="E" DESCRIPT="PV_SCREEN_NUMBER" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DYNNR"/>
+   <source>method constructor.
+
+  data:
+    begin of s_elements,
+      selscreen type ref to zcl_subscreenarea,
+    end of s_elements.
+
+  super-&gt;constructor(
+    pv_program_of_screen = &apos;Z_SCREENS&apos;
+    pv_screen_number = &apos;0003&apos;).
+
+  get_elements( changing ps_elements = s_elements ).
+  clear constructor_get_elements.
+
+  screenarea = s_elements-selscreen.
+  screenarea-&gt;prog = selscrgroup = pv_program_of_selectionscreen.
+  screenarea-&gt;dynr = selscrnumber = pv_screen_number.
+
+  zcl_ucomm_dispatcher=&gt;register_selectionscreen( me ).
+
+*  Create Toolbar Button
+**********************************************************************
+  create object btn_enter
+    exporting
+      pv_iconname = &apos;@2K@&apos;
+      pv_label = &apos;&apos;
+      pv_caption = &apos;Enter&apos;.
+
+  create object lsnr_btn_enter.
+
+  btn_enter-&gt;add_action_listener( lsnr_btn_enter ).
+**********************************************************************
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREEN" CMPNAME="GET_ELEMENTS" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " CREATEDON="00000000" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method get_elements.
+* Populate screen fields table with passed elements (zcl_screenfield objects only).
+
+  data:
+    lo_structdesc   type ref to cl_abap_structdescr,
+    name            like  zcl_screenfield=&gt;name,
+    lo_screenfield  type ref to zcl_screenfield.
+
+  field-symbols:
+    &lt;compdesc&gt;    type abap_compdescr,
+    &lt;element&gt;     type any.
+
+
+
+ &quot;For some reason can&apos;t call the super&apos;s implementation of get_elements in the constructor therefore need to do
+* it here but with attribute set to indicate it is the super&apos;s element set wanted then this attribute can be cleared
+* and users of this class get this classes reimplemention of the method.
+  if constructor_get_elements eq &apos;X&apos;.
+    super-&gt;get_elements( changing ps_elements = ps_elements ).
+    return.
+  endif.
+
+
+  lo_structdesc ?= cl_abap_structdescr=&gt;describe_by_data( ps_elements ).
+
+  if lo_structdesc-&gt;type_kind ne &apos;v&apos; and lo_structdesc-&gt;type_kind ne &apos;u&apos;.
+    return. &quot;Raise exception - not a structure of screen elements.
+  endif.
+
+  loop at lo_structdesc-&gt;components assigning &lt;compdesc&gt;.
+
+    name = &lt;compdesc&gt;-name.
+
+    create object lo_screenfield
+      exporting
+        pv_name       = name
+        pv_screenname = name.
+
+    assign component &lt;compdesc&gt;-name of structure ps_elements to &lt;element&gt;.
+
+    try.
+        &lt;element&gt; ?= lo_screenfield.
+        append lo_screenfield to t_elements.
+      catch cx_sy_move_cast_error.
+
+    endtry.
+
+  endloop.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="GET_TOOLBAR_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130405" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="GET_TOOLBAR_BUTTON" SCONAME="PO_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130405" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_APP_BUTTON"/>
+   <source>method get_toolbar_button.
+
+  po_button = btn_enter.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="PAI" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pai.
+
+  data:
+    lo_field  type ref to zcl_screenfield,
+    lv_fname  type string.
+
+  field-symbols:
+    &lt;progfield&gt; type any.
+
+  loop at t_elements into lo_field.
+
+    concatenate &apos;(&apos; selscrgroup &apos;)&apos; lo_field-&gt;name &apos;[]&apos; into lv_fname.
+    assign (lv_fname) to &lt;progfield&gt;.
+
+    if sy-subrc &lt;&gt; 0.
+      concatenate &apos;(&apos; selscrgroup &apos;)&apos; lo_field-&gt;name into lv_fname.
+      assign (lv_fname) to &lt;progfield&gt;.
+    endif.
+
+    lo_field-&gt;set_value( &lt;progfield&gt; ).
+  endloop.
+
+
+*  Get UCOMM
+**********************************************************************
+  field-symbols:
+   &lt;sscrfields&gt; type sscrfields.
+
+  concatenate &apos;(&apos; selscrgroup &apos;)sscrfields&apos; into lv_fname.
+  assign (lv_fname) to &lt;sscrfields&gt;.
+  if &lt;sscrfields&gt;-ucomm eq &apos;ENTER&apos; and entry_listener is not initial.
+*    try.
+        entry_listener-&gt;entry_made( ).
+*      catch cx_sy_dyn_call_illegal_method. &quot;Possible issue if method not defined.
+*
+*    endtry.
+  endif.
+**********************************************************************
+
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="PBO" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method PBO .
+  &quot;Could set default values on output here.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="SET_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDBY="ITAJR" CHANGEDON="20130310" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SELECTIONSCREEN" CMPNAME="SET_LISTENER" SCONAME="PO_LISTENER" VERSION="1" LANGU="E" DESCRIPT="Selection screen action listener" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_SELECTIONSCREEN_LISTENER"/>
+   <source>method set_listener.
+  entry_listener = po_listener.
+  lsnr_btn_enter-&gt;set_lsnr_selection( po_listener ).
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

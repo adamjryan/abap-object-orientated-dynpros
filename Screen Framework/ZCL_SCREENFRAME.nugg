@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_SCREENFRAME">
+ <CLAS CLSNAME="ZCL_SCREENFRAME" VERSION="1" LANGU="E" DESCRIPT="Implements the SAP standard frame for screens." UUID="325229E4B5AEC448AC8457A65DA5C4A9" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00" REFCLSNAME="ZCL_SCREEN">
+  <publicSection>class ZCL_SCREENFRAME definition
+  public
+  inheriting from ZCL_SCREEN
+  create public .
+
+*&quot;* public components of class ZCL_SCREENFRAME
+*&quot;* do not include other source files here!!!
+public section.
+
+  constants SCREEN_DEFINITION_NUMBER type DYNNR
+ value &apos;0001&apos;. &quot;#EC NOTEXT
+  class-data IS_APPTOOLBAR_ENABLED type XFELD value &apos;&apos; .
+
+  methods CALL_SCREEN
+    importing
+      !PV_AS_POPUP type XFELD default &apos; &apos;
+    returning
+      value(PV_UCOMM) type SYUCOMM .
+  methods CONSTRUCTOR
+    importing
+      !PO_SCREEN type ref to ZCL_SCREEN optional .
+  methods GET_APP_TOOLBAR
+    returning
+      value(PO_APP_TOOLBAR) type ref to ZCL_APP_TOOLBAR .
+  methods GET_FRAME_TOOLBAR
+    returning
+      value(PO_FRAME_TOOLBAR) type ref to ZCL_FRAME_TOOLBAR .
+  methods PBO .
+  methods SET_SCREENAREA
+    importing
+      !PO_SCREEN type ref to ZCL_SCREEN .
+  methods SET_TITLE
+    importing
+      !PV_TITLE type CUA_TIT_TX .
+  methods GET_SCREEN
+    returning
+      value(PO_SCREEN) type ref to ZCL_SCREEN .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_SCREENFRAME
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_SCREENFRAME
+*&quot;* do not include other source files here!!!
+private section.
+
+  data APP_TOOLBAR type ref to ZCL_APP_TOOLBAR .
+  data FRAME_TOOLBAR type ref to ZCL_FRAME_TOOLBAR .
+  data IS_TITLEBAR_SET type XFELD value &apos; &apos; .
+  data:
+    begin of s_elements,
+      subscr type ref to zcl_subscreenarea,
+    end of s_elements .
+  data TITLE type CUA_TIT_TX .
+
+  methods BACK .
+  methods EXIT .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="APP_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_APP_TOOLBAR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="FRAME_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="O_FRAME_TOOLBAR" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_FRAME_TOOLBAR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="IS_APPTOOLBAR_ENABLED" VERSION="1" LANGU="E" DESCRIPT="Checkbox" EXPOSURE="2" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="1" ATTVALUE="&apos;&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="XFELD" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="IS_TITLEBAR_SET" VERSION="1" LANGU="E" DESCRIPT="IS_TITLEBAR_SET" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTVALUE="&apos; &apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="XFELD" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="SCREEN_DEFINITION_NUMBER" VERSION="1" LANGU="E" DESCRIPT="Number of the following screen" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130307" ATTDECLTYP="2" ATTVALUE="&apos;0001&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DYNNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="S_ELEMENTS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="11 " SRCCOLUMN2="20 "/>
+  <attribute CLSNAME="ZCL_SCREENFRAME" CMPNAME="TITLE" VERSION="1" LANGU="E" DESCRIPT="Text of title line" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="CUA_TIT_TX" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <inheritance CLSNAME="ZCL_SCREENFRAME" REFCLSNAME="ZCL_SCREEN" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="BACK" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method back.
+
+* IF sy-dynnr EQ screennumber. &quot;or subscreen
+    leave to screen 0. &quot;Set flag and process in pbo
+    leave screen. &quot;Needs to go to previous screen
+*   set screen 0. &quot;Cannot call this command in a subscreen
+*   (need to set a flag to raise it in main screen processing).
+* endif.
+
+
+
+*  if o_back_relay is not initial.
+*
+*    o_back_relay-&gt;button_pressed( o_toolbar_proxy ).
+*
+*    if is_externally_controlled is initial.
+*      zif_screenframe_actions~back( ).
+*    endif.
+*
+*  else.
+*    zif_screenframe_actions~back( ).
+*  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="CALL_SCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="CALL_SCREEN" SCONAME="PV_AS_POPUP" VERSION="1" LANGU="E" DESCRIPT="Checkbox" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="XFELD" PARVALUE="&apos; &apos;"/>
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="CALL_SCREEN" SCONAME="PV_UCOMM" VERSION="1" LANGU="E" DESCRIPT="Screens, function code triggered by PAI" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="SYUCOMM"/>
+   <source>method call_screen.
+*PV_AS_POPUP        TYPE XFELD  DEFAULT &apos; &apos; Checkbox
+*VALUE( PV_UCOMM )  TYPE SYUCOMM  Screens, function code triggered by PAI
+
+  data:
+*    o_modal type ref to zcl_screenframe_modal,
+    o_frame type ref to zcl_screenframe.
+
+
+
+  if pv_as_popup is initial.
+    call function &apos;Z_CALLSCREEN&apos;
+      exporting
+        pv_dynnr_instance = screennumber.
+  else.
+
+*    TRY.
+*      o_modal ?= po_screen.
+*      o_modal-&gt;call_screen( ).
+*    CATCH cx_sy_move_cast_error.
+*      create object o_modal
+*        exporting
+*          po_screenctlr = po_screen.
+*
+*      o_modal-&gt;call_screen( ).
+*    ENDTRY.
+
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="CONSTRUCTOR" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SCREEN" PAROPTIONL="X"/>
+   <source>method constructor.
+
+*  data:
+*    begin of s_elements,
+*      subscr type ref to zcl_subscreenarea,
+*    end of s_elements.
+
+*  data:
+*    ref_elements  type ref to data.
+
+*  get reference of s_elements into ref_elements.
+
+  zcl_screenframe=&gt;is_apptoolbar_enabled = &apos;X&apos;.
+
+  super-&gt;constructor(
+    pv_program_of_screen = &apos;Z_SCREENS&apos;
+    pv_screen_number = screen_definition_number ).
+
+  get_elements( changing ps_elements = s_elements ).
+
+*  data:
+*    lo_toolbar_implementor    type ref to zif_frame_toolbar_implementor,
+*    lo_screenframe_controller type ref to zif_screenframe_controller.
+
+
+  create object frame_toolbar.
+
+*  create object o_back
+*    exporting
+*      po_screenframe = me.
+
+*  o_frame_toolbar-&gt;zif_frame_toolbar~set_handler_for_back( o_back ).
+
+*  create object o_exit
+*    exporting
+*      po_screenframe = me.
+
+*  o_frame_toolbar-&gt;zif_frame_toolbar~set_handler_for_exit( o_exit ).
+
+*  create object o_toolbar_proxy
+*    exporting
+*      po_screenframe = me.
+
+*  s_elements-subscr-&gt;set_subscreen( po_screen ).
+
+*  try.
+*      lo_toolbar_implementor ?= po_screen.
+*      lo_toolbar_implementor-&gt;set_toolbar( o_toolbar_proxy ).
+*  catch cx_sy_move_cast_error. &quot;Note - try RESUMABLE exception statement somewhere...
+*  endtry.
+
+*  try.
+*      lo_screenframe_controller ?= po_screen.
+*      lo_screenframe_controller-&gt;set_screenframe_actions( me ). &quot;//TODO create proxy for actions.
+*      is_externally_controlled = &apos;X&apos;.
+**     if subscreen is a toolbar implementor as well then remove
+**     default back and exit listeners (greyed out).
+*  catch cx_sy_move_cast_error.
+*  endtry.
+
+  create object app_toolbar.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="EXIT" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method exit.
+
+* IF sy-dynnr EQ screennumber. &quot;or subscreen
+*   set screen 0.
+    leave to screen 0. &quot;Set flag and process in pbo
+   &quot;effect for leave screen call in pbo?
+* ENDIF.
+
+*  if o_exit_relay is not initial.
+*
+*    o_exit_relay-&gt;button_pressed( o_toolbar_proxy ).
+*
+*    if is_externally_controlled is initial.
+*      zif_screenframe_actions~exit( ).
+*    endif.
+*
+*  else.
+*    zif_screenframe_actions~exit( ).
+*  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="GET_APP_TOOLBAR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="GET_APP_TOOLBAR" SCONAME="PO_APP_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_APP_TOOLBAR"/>
+   <source>method get_app_toolbar.
+  po_app_toolbar = app_toolbar.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="GET_FRAME_TOOLBAR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="GET_FRAME_TOOLBAR" SCONAME="PO_FRAME_TOOLBAR" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_FRAME_TOOLBAR"/>
+   <source>method get_frame_toolbar.
+  po_frame_toolbar = frame_toolbar.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="GET_SCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="GET_SCREEN" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" DESCRIPT="Links function group screen to object" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method get_screen.
+  po_screen = s_elements-subscr-&gt;get_subscreen( ).
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="PBO" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pbo.
+  &quot;Should be performed as last action in set_screen_controls.
+
+  data:
+    t_excluded_buttons  type table of syucomm, ucomm  type syucomm.
+
+
+  frame_toolbar-&gt;pbo( ).
+  frame_toolbar-&gt;get_inactivebutton_ucomms(
+    changing pt_inactive_ucomms = t_excluded_buttons ).
+
+  app_toolbar-&gt;pbo( ).
+  app_toolbar-&gt;get_inactivebutton_ucomms(
+    changing pt_inactive_ucomms = t_excluded_buttons ).
+
+  set pf-status &apos;FRAME_TOOLBAR&apos; of program &apos;SAPLZ_SCREENS&apos; excluding t_excluded_buttons.
+
+
+*  if is_titlebar_set is initial. &quot;Misuse of abap keywords could change, therefore ensure it is set.
+  set titlebar &apos;TITLE&apos; of program &apos;SAPLZ_SCREENS&apos; with title.
+*    is_titlebar_set = &apos;X&apos;.
+*  endif.
+
+*  message &apos;PAI!&apos; type &apos;S&apos; display like &apos;W&apos;.
+
+
+*  CL_GUI_FRONTEND_SERVICES=&gt;EXECUTE(
+*    EXPORTING
+*      DOCUMENT = &apos;https://www.sdn.sap.com/test.xls&apos;
+*    EXCEPTIONS
+*      CNTL_ERROR = 1 ).
+
+*  suppress dialog. &quot;Used if data set dynamically to continue processing as if enter was pressed.
+*  cl_gui_cfw=&gt;set_new_ok_code( ).
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="SET_SCREENAREA" VERSION="1" LANGU="E" DESCRIPT="SET_CONTAINER -&gt; set_screen" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130305" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="SET_SCREENAREA" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method set_screenarea.
+  s_elements-subscr-&gt;set_subscreen( po_screen ).
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREENFRAME" CMPNAME="SET_TITLE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREENFRAME" CMPNAME="SET_TITLE" SCONAME="PV_TITLE" VERSION="1" LANGU="E" DESCRIPT="Text of title line" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130305" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="CUA_TIT_TX"/>
+   <source>method set_title.
+  title = pv_title.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

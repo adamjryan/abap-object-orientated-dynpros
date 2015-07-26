@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_APP_TOOLBAR">
+ <CLAS CLSNAME="ZCL_APP_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar" UUID="5A70195335FC444CB94BAF35D3DA9B38" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130127" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <friends CLSNAME="ZCL_APP_TOOLBAR" REFCLSNAME="ZCL_SCREENFRAME" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_APP_TOOLBAR definition
+  public
+  create public
+
+  global friends ZCL_SCREENFRAME .
+
+*&quot;* public components of class ZCL_APP_TOOLBAR
+*&quot;* do not include other source files here!!!
+public section.
+
+  class-methods CLASS_CONSTRUCTOR .
+  methods CONSTRUCTOR .
+  class ZCL_PUBLICTYPES definition load .
+  methods GET_INACTIVEBUTTON_UCOMMS
+    changing
+      !PT_INACTIVE_UCOMMS type ZCL_PUBLICTYPES=&gt;TYT_UCOMM .
+  methods PBO .
+  methods ADD_BUTTON
+    importing
+      !PO_APP_BUTTON type ref to ZCL_APP_BUTTON .
+  methods REMOVE_ALL_BUTTONS .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_APP_TOOLBAR
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_APP_TOOLBAR
+*&quot;* do not include other source files here!!!
+private section.
+
+  class-data BLANK_BUTTON type ref to ZCL_APP_BUTTON .
+  class-data SET_INSTANCE type ref to ZCL_APP_TOOLBAR .
+  data:
+    begin of cs_ucomms,
+      b01 type syucomm value &apos;A01&apos;,
+      b02 type syucomm value &apos;A02&apos;,
+      b03 type syucomm value &apos;A03&apos;,
+      b04 type syucomm value &apos;A04&apos;,
+      b05 type syucomm value &apos;A05&apos;,
+      b06 type syucomm value &apos;A06&apos;,
+      b07 type syucomm value &apos;A07&apos;,
+      b08 type syucomm value &apos;A08&apos;,
+      b09 type syucomm value &apos;A09&apos;,
+      b10 type syucomm value &apos;A10&apos;,
+      b11 type syucomm value &apos;A11&apos;,
+      b12 type syucomm value &apos;A12&apos;,
+    end of cs_ucomms .
+  data:
+    begin of s_buttons,
+      b01 type ref to zcl_app_button,
+      b02 type ref to zcl_app_button,
+      b03 type ref to zcl_app_button,
+      b04 type ref to zcl_app_button,
+      b05 type ref to zcl_app_button,
+      b06 type ref to zcl_app_button,
+      b07 type ref to zcl_app_button,
+      b08 type ref to zcl_app_button,
+      b09 type ref to zcl_app_button,
+      b10 type ref to zcl_app_button,
+      b11 type ref to zcl_app_button,
+      b12 type ref to zcl_app_button,
+    end of s_buttons .
+  data:
+    t_inactive_buttons type table of syucomm .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations
+
+
+
+
+class lcl_button implementation.
+
+*  method constructor.
+*    values-icon_text = pv_caption.
+*    o_toolbar = po_toolbar.
+*  endmethod.
+*
+*  method add_action_listener.
+*    is_active = &apos;X&apos;.
+*    values-icon_id = &apos;&amp;01&amp;&apos;.
+*    append po_action_listener to action_listeners.
+*  endmethod.
+*
+*  method remove_action_listener.
+*    delete table action_listeners with table key table_line = po_action_listener.
+*    if action_listeners is initial.
+*      clear is_active.
+*      clear values-icon_id.
+*    endif.
+*  endmethod.
+*
+*  method set_caption.
+*    values-icon_text = pv_caption.
+*  endmethod.
+*
+*  method relay_action.
+*
+*    data:
+*      action_listener like line of action_listeners.
+*
+*    loop at action_listeners into action_listener.
+*      action_listener-&gt;button_pressed( o_toolbar ).
+*    endloop.
+*
+*  endmethod.
+endclass.</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section
+
+*ZCL_FRAME_TOOLBAR=&gt;SET_INSTANCE-&gt;S_BUTTONS-SAVE-&gt;VALUES
+*ZCL_APP_TOOLBAR=&gt;SET_INSTANCE-&gt;S_BUTTONS-B1-&gt;VALUES
+
+
+class lcl_button definition.
+
+  public section.
+
+*    data:
+*      is_active type xfeld read-only value &apos; &apos;.
+
+*    methods:
+*      constructor
+*        importing
+*          po_toolbar  type ref to zcl_frame_toolbar
+*          pv_caption  type smp_dyntxt-icon_text,
+*
+*      add_action_listener
+*        importing
+*          po_action_listener type ref to zif_button_action_listener,
+*
+*      remove_action_listener
+*        importing
+*          po_action_listener type ref to zif_button_action_listener,
+*
+*      set_caption
+*        importing
+*          pv_caption  type smp_dyntxt-icon_text,
+*
+*      relay_action.
+
+
+  private section.
+
+    data:
+*      o_toolbar type ref to zcl_frame_toolbar,
+*
+*      action_listeners type table of ref to zif_button_action_listener,
+*
+*      name    type d021s-fnam,
+      values  type smp_dyntxt.
+*TEXT       GUI_TEXT    CHAR  40  0 Menu Painter: Function or menu text (4.0)
+*ICON_ID    ICON_D      CHAR  4   0 Icon in text fields (substitute display, alias)
+*ICON_TEXT  GUI_ICTEXT  CHAR  40  0 Menu Painter: Icon text (4.0)
+*QUICKINFO  GUI_INFO    CHAR  60  0 Menu Painter: Info text (4.0)
+*PATH       CUA_PATH    CHAR  1   0 Fastpath ID
+
+endclass.</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="BLANK_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar Button" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_APP_BUTTON" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="CS_UCOMMS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="8 " SRCCOLUMN1="4 " SRCROW2="21 " SRCCOLUMN2="19 "/>
+  <attribute CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="SET_INSTANCE" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130207" CHANGEDBY="ITAJR" CHANGEDON="20130306" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_APP_TOOLBAR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="S_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130207" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="23 " SRCCOLUMN1="4 " SRCROW2="36 " SRCCOLUMN2="19 "/>
+  <attribute CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="T_INACTIVE_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDBY="ITAJR" CHANGEDON="20130310" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="38 " SRCCOLUMN1="4 " SRCROW2="38 " SRCCOLUMN2="43 "/>
+  <method CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="ADD_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="ADD_BUTTON" SCONAME="PO_APP_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Application Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_APP_BUTTON"/>
+   <source>method add_button.
+
+  field-symbols:
+    &lt;button&gt;  type ref to zcl_app_button,
+    &lt;ucomm&gt; type syucomm.
+
+
+  do.
+    assign component sy-index of structure s_buttons to &lt;button&gt;.
+    if sy-subrc &lt;&gt; 0.
+      exit. &quot;End of structure.
+    endif.
+
+    if &lt;button&gt; eq blank_button.
+      &lt;button&gt; = po_app_button.
+
+      assign component sy-index of structure cs_ucomms to &lt;ucomm&gt;.
+      zcl_ucomm_dispatcher=&gt;add_toolbarlistener( po_ucomm_listener = po_app_button pv_ucomm = &lt;ucomm&gt; ).
+
+      delete table t_inactive_buttons with table key table_line = &lt;ucomm&gt;.
+      exit.
+    endif.
+  enddo.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method class_constructor.
+
+  create object set_instance.
+
+  create object blank_button
+    exporting
+      pv_label = &apos;&apos;.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method constructor.
+
+  field-symbols:
+    &lt;button&gt;  type ref to zcl_app_button,
+    &lt;ucomm&gt;   type syucomm.
+
+  do.
+    assign component sy-index of structure s_buttons to &lt;button&gt;.
+    if sy-subrc eq 0.
+      &lt;button&gt; = blank_button.
+      assign component sy-index of structure cs_ucomms to &lt;ucomm&gt;.
+      append &lt;ucomm&gt; to t_inactive_buttons.
+    else.
+      exit.
+    endif.
+  enddo.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="GET_INACTIVEBUTTON_UCOMMS" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="GET_INACTIVEBUTTON_UCOMMS" SCONAME="PT_INACTIVE_UCOMMS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="ZCL_PUBLICTYPES=&gt;TYT_UCOMM"/>
+   <source>method get_inactivebutton_ucomms.
+
+  append lines of t_inactive_buttons to pt_inactive_ucomms.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="PBO" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pbo.
+  set_instance = me. &quot;set last incase there are multiple reassignments in PBO
+*  set pf-status &apos;FRAME_TOOLBAR&apos; of program &apos;SAPLZ_SCREENS&apos; excluding t_inactive_buttons.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_APP_TOOLBAR" CMPNAME="REMOVE_ALL_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130310" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method remove_all_buttons.
+
+  field-symbols:
+    &lt;button&gt;  type ref to zcl_app_button,
+    &lt;ucomm&gt; type syucomm.
+
+
+  do.
+    assign component sy-index of structure s_buttons to &lt;button&gt;.
+    if sy-subrc &lt;&gt; 0.
+      exit. &quot;End of structure.
+    endif.
+
+    if &lt;button&gt; ne blank_button.
+      &lt;button&gt; = blank_button.
+
+      assign component sy-index of structure cs_ucomms to &lt;ucomm&gt;.
+      zcl_ucomm_dispatcher=&gt;remove_toolbarlistener( pv_ucomm = &lt;ucomm&gt; ).
+
+      append &lt;ucomm&gt; to t_inactive_buttons.
+    endif.
+  enddo.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

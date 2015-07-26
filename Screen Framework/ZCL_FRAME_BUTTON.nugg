@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_FRAME_BUTTON">
+ <CLAS CLSNAME="ZCL_FRAME_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Frame Toolbar Button" UUID="50D27E649A197E4890B116FDB7BB2302" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <publicSection>class ZCL_FRAME_BUTTON definition
+  public
+  create public .
+
+*&quot;* public components of class ZCL_FRAME_BUTTON
+*&quot;* do not include other source files here!!!
+public section.
+
+  methods CONSTRUCTOR
+    importing
+      !PV_CAPTION type SMP_DYNTXT-ICON_TEXT .
+  methods ADD_ACTION_LISTENER
+    importing
+      !PO_ACTION_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods REMOVE_ACTION_LISTENER
+    importing
+      !PO_ACTION_LISTENER type ref to ZIF_BUTTON_ACTION_LISTENER .
+  methods SET_CAPTION
+    importing
+      !PV_CAPTION type SMP_DYNTXT-ICON_TEXT .
+  methods GET_ISACTIVE
+    returning
+      value(PV_ISACTIVE) type XFELD .
+  methods RELAY_ACTION .</publicSection>
+  <protectedSection>*&quot;* protected components of class ZCL_FRAME_BUTTON
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_FRAME_BUTTON
+*&quot;* do not include other source files here!!!
+private section.
+
+  data:
+    action_listeners type table of ref to zif_button_action_listener .
+  data NAME type D021S-FNAM .
+  data VALUES type SMP_DYNTXT .</privateSection>
+  <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+  <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="ACTION_LISTENERS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="6 " SRCCOLUMN2="67 "/>
+  <attribute CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="VALUES" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Program interface for dynamic texts" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SMP_DYNTXT" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <method CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="ADD_ACTION_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="ADD_ACTION_LISTENER" SCONAME="PO_ACTION_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method add_action_listener.
+  values-icon_id = &apos;&amp;01&amp;&apos;.
+  append po_action_listener to action_listeners.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="CONSTRUCTOR" SCONAME="PV_CAPTION" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Icon text (4.0)" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SMP_DYNTXT-ICON_TEXT"/>
+   <source>method constructor.
+  values-icon_text = pv_caption.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="GET_ISACTIVE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="GET_ISACTIVE" SCONAME="PV_ISACTIVE" VERSION="1" LANGU="E" DESCRIPT="Checkbox" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="XFELD"/>
+   <source>method get_isactive.
+
+  if lines( action_listeners ) &gt; 0.
+    pv_isactive = &apos;X&apos;.
+  else.
+    pv_isactive = &apos; &apos;.
+  endif.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="RELAY_ACTION" VERSION="1" LANGU="E" DESCRIPT="Internal Only - Do Not Use" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method relay_action.
+
+  data:
+    action_listener like line of action_listeners.
+
+  loop at action_listeners into action_listener.
+    action_listener-&gt;button_pressed( me ).
+  endloop.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="REMOVE_ACTION_LISTENER" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130211" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="REMOVE_ACTION_LISTENER" SCONAME="PO_ACTION_LISTENER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_BUTTON_ACTION_LISTENER"/>
+   <source>method remove_action_listener.
+  delete table action_listeners with table key table_line = po_action_listener.
+  if action_listeners is initial.
+    clear values-icon_id.
+  endif.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="SET_CAPTION" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_BUTTON" CMPNAME="SET_CAPTION" SCONAME="PV_CAPTION" VERSION="1" LANGU="E" DESCRIPT="Menu Painter: Icon text (4.0)" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SMP_DYNTXT-ICON_TEXT"/>
+   <source>method set_caption .
+  values-icon_text = pv_caption.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

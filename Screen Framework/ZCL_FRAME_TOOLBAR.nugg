@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_FRAME_TOOLBAR">
+ <CLAS CLSNAME="ZCL_FRAME_TOOLBAR" VERSION="1" LANGU="E" UUID="6BB9BD0483EF854D87C1963E0F00A072" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20121231" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <friends CLSNAME="ZCL_FRAME_TOOLBAR" REFCLSNAME="ZCL_SCREENFRAME" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_FRAME_TOOLBAR definition
+  public
+  final
+  create public
+
+  global friends ZCL_SCREENFRAME .
+
+*&quot;* public components of class ZCL_FRAME_TOOLBAR
+*&quot;* do not include other source files here!!!
+public section.
+
+  class-methods CLASS_CONSTRUCTOR .
+  methods CONSTRUCTOR .
+  methods GET_BACK_BUTTON
+    returning
+      value(PO_BUTTON) type ref to ZCL_FRAME_BUTTON .
+  methods GET_CANCEL_BUTTON
+    returning
+      value(PO_BUTTON) type ref to ZCL_FRAME_BUTTON .
+  methods GET_ENTER_BUTTON
+    returning
+      value(PO_BUTTON) type ref to ZCL_FRAME_BUTTON .
+  methods GET_EXIT_BUTTON
+    returning
+      value(PO_BUTTON) type ref to ZCL_FRAME_BUTTON .
+  class ZCL_PUBLICTYPES definition load .
+  methods GET_INACTIVEBUTTON_UCOMMS
+    changing
+      !PT_INACTIVE_UCOMMS type ZCL_PUBLICTYPES=&gt;TYT_UCOMM .
+  methods GET_SAVE_BUTTON
+    returning
+      value(PO_BUTTON) type ref to ZCL_FRAME_BUTTON .
+  methods PBO .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_FRAME_TOOLBAR
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_FRAME_TOOLBAR
+*&quot;* do not include other source files here!!!
+private section.
+
+  constants:
+    begin of cs_ucomms,
+      enter       type syucomm value &apos;FENTER&apos;,
+      save        type syucomm value &apos;FSAVE&apos;,
+      back        type syucomm value &apos;FBACK&apos;,
+      exit        type syucomm value &apos;FEXIT&apos;,
+      cancel      type syucomm value &apos;FCANCEL&apos;,
+      print       type syucomm value &apos;FPRINT&apos;,
+      find        type syucomm value &apos;FFIND&apos;,
+      find_next   type syucomm value &apos;FFINDNEXT&apos;,
+      page_top    type syucomm value &apos;FFIRST&apos;,
+      page_up     type syucomm value &apos;FPREV&apos;,
+      page_down   type syucomm value &apos;FNEXT&apos;,
+      page_last   type syucomm value &apos;FLAST&apos;,
+*      help        type syucomm value &apos;FHELP&apos;,
+    end of cs_ucomms .
+  class-data:
+    begin of s_static_buttons,
+      enter type ref to lcl_static_button_listener ,
+      save type ref to lcl_static_button_listener,
+      back type ref to lcl_static_button_listener ,
+      exit type ref to lcl_static_button_listener,
+      cancel type ref to lcl_static_button_listener,
+      print type ref to lcl_static_button_listener,
+      find type ref to lcl_static_button_listener,
+      find_next type ref to lcl_static_button_listener,
+      page_top type ref to lcl_static_button_listener ,
+      page_up type ref to lcl_static_button_listener ,
+      page_down type ref to lcl_static_button_listener,
+      page_last type ref to lcl_static_button_listener,
+*      help type ref to lcl_static_button_listener,
+*      layout type ref to lcl_static_button_listener,
+    end of s_static_buttons .
+  class-data SET_INSTANCE type ref to ZCL_FRAME_TOOLBAR .
+  data:
+    begin of s_buttons,
+      enter type ref to ZCL_FRAME_BUTTON,
+      save type ref to ZCL_FRAME_BUTTON,
+      back type ref to ZCL_FRAME_BUTTON,
+      exit type ref to ZCL_FRAME_BUTTON,
+      cancel type ref to ZCL_FRAME_BUTTON,
+      print type ref to ZCL_FRAME_BUTTON,
+      find type ref to ZCL_FRAME_BUTTON,
+      find_next type ref to ZCL_FRAME_BUTTON,
+      page_top type ref to ZCL_FRAME_BUTTON,
+      page_up type ref to ZCL_FRAME_BUTTON,
+      page_down type ref to ZCL_FRAME_BUTTON,
+      page_last type ref to ZCL_FRAME_BUTTON,
+*      help type ref to lcl_frame_button,
+*      layout type ref to lcl_frame_button,
+    end of s_buttons .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations
+
+
+class zcl_frame_toolbar definition local friends lcl_static_button_listener.
+
+class lcl_static_button_listener implementation.
+
+  method constructor.
+
+    zcl_ucomm_dispatcher=&gt;add_toolbarlistener( po_ucomm_listener = me pv_ucomm = pv_ucomm ).
+    relay_button_name = pv_relay_button_name.
+
+  endmethod.                    &quot;constructor
+
+  method zif_ucomm_action_listener~action_raised.
+
+    field-symbols:
+      &lt;fs&gt; type ref to zcl_frame_button.
+
+    assign component relay_button_name of structure zcl_frame_toolbar=&gt;set_instance-&gt;s_buttons to &lt;fs&gt;.
+    &lt;fs&gt;-&gt;relay_action( ).
+
+  endmethod.                    &quot;zif_ucomm_action_listener~action_raised
+
+endclass.                    &quot;lcl_static_button_listener IMPLEMENTATION</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section
+
+
+
+class lcl_static_button_listener definition.
+
+  public section.
+
+    interfaces:
+      zif_ucomm_action_listener.
+
+    methods:
+      constructor
+        importing
+          pv_relay_button_name  type seocpdname
+          pv_ucomm              like zif_ucomm_action_listener~ucomm.
+
+  private section.
+
+    data:
+      relay_button_name type seocpdname.
+
+endclass.                    &quot;lcl_static_button_listener DEFINITION</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <typeUsage CLSNAME="ZCL_FRAME_TOOLBAR" TYPEGROUP="T" VERSION="1" TPUTYPE="0" IMPLICIT="X"/>
+  <forwardDeclaration>T</forwardDeclaration>
+  <attribute CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="CS_UCOMMS" VERSION="1" LANGU="E" DESCRIPT="CS_UCOMMS" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="20 " SRCCOLUMN2="19 "/>
+  <attribute CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="SET_INSTANCE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_FRAME_TOOLBAR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="S_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="40 " SRCCOLUMN1="4 " SRCROW2="55 " SRCCOLUMN2="19 "/>
+  <attribute CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="S_STATIC_BUTTONS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="22 " SRCCOLUMN1="4 " SRCROW2="37 " SRCCOLUMN2="26 "/>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method CLASS_CONSTRUCTOR.
+
+  create object set_instance.
+
+  create object s_static_buttons-enter
+    exporting
+      pv_relay_button_name = &apos;ENTER&apos;
+      pv_ucomm        = cs_ucomms-enter.
+*      pv_label        = &apos;Enter&apos;
+*      pv_iconname     = &apos;ICON_SYSTEM_OKAY&apos;.
+
+  create object s_static_buttons-save
+    exporting
+      pv_relay_button_name = &apos;SAVE&apos;
+      pv_ucomm        = cs_ucomms-save.
+*      pv_label        = &apos;Save&apos;
+*      pv_iconname     = &apos;ICON_SYSTEM_SAVE&apos;.
+
+  create object s_static_buttons-back
+    exporting
+      pv_relay_button_name = &apos;BACK&apos;
+      pv_ucomm        = cs_ucomms-back.
+*      pv_label        = &apos;Back&apos;
+*      pv_iconname     = &apos;ICON_SYSTEM_BACK&apos;.
+
+  create object s_static_buttons-exit
+    exporting
+      pv_relay_button_name = &apos;EXIT&apos;
+      pv_ucomm        = cs_ucomms-exit.
+*      pv_label        = &apos;Exit&apos;
+*      pv_iconname     = &apos;ICON_SYSTEM_END&apos;.
+
+  create object s_static_buttons-cancel
+    exporting
+      pv_relay_button_name = &apos;CANCEL&apos;
+      pv_ucomm        = cs_ucomms-cancel.
+*      pv_label        = &apos;Cancel&apos;
+*      pv_iconname     = &apos;ICON_SYSTEM_CANCEL&apos;.
+
+  create object s_static_buttons-print
+    exporting
+      pv_relay_button_name = &apos;PRINT&apos;
+      pv_ucomm        = cs_ucomms-print.
+*      pv_label        = &apos;Print&apos;
+*      pv_iconname     = &apos;ICON_SYSTEM_PRINT&apos;.
+
+  create object s_static_buttons-find
+    exporting
+      pv_relay_button_name = &apos;FIND&apos;
+      pv_ucomm        = cs_ucomms-find.
+*      pv_label        = &apos;Find&apos;
+*      pv_iconname     = &apos;ICON_SEARCH&apos;.
+
+  create object s_static_buttons-find_next
+    exporting
+      pv_relay_button_name = &apos;FIND_NEXT&apos;
+      pv_ucomm        = cs_ucomms-find_next.
+*      pv_label        = &apos;Find Next&apos;
+*      pv_iconname     = &apos;ICON_SEARCH_NEXT&apos;.
+
+  create object s_static_buttons-page_top
+    exporting
+      pv_relay_button_name = &apos;PAGE_TOP&apos;
+      pv_ucomm        = cs_ucomms-page_top.
+*      pv_label        = &apos;First Page&apos;
+*      pv_iconname     = &apos;ICON_FIRST_PAGE&apos;.
+
+  create object s_static_buttons-page_up
+    exporting
+      pv_relay_button_name = &apos;PAGE_UP&apos;
+      pv_ucomm        = cs_ucomms-page_up.
+*      pv_label        = &apos;Previous Page&apos;
+*      pv_iconname     = &apos;ICON_PREVIOUS_PAGE&apos;.
+
+  create object s_static_buttons-page_down
+    exporting
+      pv_relay_button_name = &apos;PAGE_DOWN&apos;
+      pv_ucomm        = cs_ucomms-page_down.
+*      pv_label        = &apos;Next Page&apos;
+*      pv_iconname     = &apos;ICON_NEXT_PAGE&apos;.
+
+  create object s_static_buttons-page_last
+    exporting
+      pv_relay_button_name = &apos;PAGE_LAST&apos;
+      pv_ucomm        = cs_ucomms-page_last.
+*      pv_label        = &apos;Last Page&apos;
+*      pv_iconname     = &apos;ICON_LAST_PAGE&apos;.
+
+*  create object s_static_buttons-help &quot;Note this can be changed in pf-status (utilities-&gt;f-consistency)
+*    exporting
+*      pv_relay_button_name = &apos;HELP&apos;
+*      pv_ucomm    = cs_ucomms-help.
+**      pv_label    = &apos;Help&apos;
+**      pv_iconname = &apos;ICON_SYSTEM_HELP&apos;.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method constructor.
+
+  create object s_buttons-enter
+    exporting
+      pv_caption = &apos;Enter&apos;.
+
+  create object s_buttons-save
+    exporting
+      pv_caption = &apos;Save&apos;.
+
+  create object s_buttons-back
+    exporting
+      pv_caption = &apos;Back&apos;.
+
+  create object s_buttons-exit
+    exporting
+      pv_caption = &apos;Exit&apos;.
+
+  create object s_buttons-cancel
+    exporting
+      pv_caption = &apos;Cancel&apos;.
+
+  create object s_buttons-print
+    exporting
+      pv_caption = &apos;Print&apos;.
+
+  create object s_buttons-find
+    exporting
+      pv_caption = &apos;Find&apos;.
+
+  create object s_buttons-find_next
+    exporting
+      pv_caption = &apos;Find Next&apos;.
+
+  create object s_buttons-page_top
+    exporting
+      pv_caption = &apos;First Page&apos;.
+
+  create object s_buttons-page_up
+    exporting
+      pv_caption = &apos;Previous Page&apos;.
+
+  create object s_buttons-page_down
+    exporting
+      pv_caption = &apos;Next Page&apos;.
+
+  create object s_buttons-page_last
+    exporting
+      pv_caption = &apos;Last Page&apos;.
+
+*  create object s_buttons-help &quot;Note this can be changed in pf-status (utilities-&gt;f-consistency)
+*    exporting
+*      pv_caption  = &apos;Help&apos;.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_BACK_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDBY="ITAJR" CHANGEDON="20130214" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_BACK_BUTTON" SCONAME="PO_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Frame Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_FRAME_BUTTON"/>
+   <source>method get_back_button.
+  po_button = s_buttons-back.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_CANCEL_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_CANCEL_BUTTON" SCONAME="PO_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Frame Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_FRAME_BUTTON"/>
+   <source>method get_cancel_button.
+  po_button = s_buttons-cancel.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_ENTER_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_ENTER_BUTTON" SCONAME="PO_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Frame Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_FRAME_BUTTON"/>
+   <source>method get_enter_button.
+  po_button = s_buttons-enter.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_EXIT_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_EXIT_BUTTON" SCONAME="PO_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Frame Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_FRAME_BUTTON"/>
+   <source>method get_exit_button.
+  po_button = s_buttons-exit.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_INACTIVEBUTTON_UCOMMS" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_INACTIVEBUTTON_UCOMMS" SCONAME="PT_INACTIVE_UCOMMS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="ZCL_PUBLICTYPES=&gt;TYT_UCOMM"/>
+   <source>method get_inactivebutton_ucomms.
+
+  data:
+    active type xfeld.
+
+  field-symbols:
+    &lt;button&gt;  type ref to zcl_frame_button,
+    &lt;ucomm&gt;   type syucomm.
+
+
+  do.
+    assign component sy-index of structure s_buttons to &lt;button&gt;.
+    if sy-subrc eq 0.
+
+      active = &lt;button&gt;-&gt;get_isactive( ).
+
+      if active is initial.
+        assign component sy-index of structure cs_ucomms to &lt;ucomm&gt;.
+        append &lt;ucomm&gt; to pt_inactive_ucomms.
+      endif.
+
+    else.
+      exit.
+    endif.
+  enddo.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_SAVE_BUTTON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130208" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="GET_SAVE_BUTTON" SCONAME="PO_BUTTON" VERSION="1" LANGU="E" DESCRIPT="Frame Toolbar Button" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_FRAME_BUTTON"/>
+   <source>method get_save_button.
+  po_button = s_buttons-save.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_FRAME_TOOLBAR" CMPNAME="PBO" VERSION="1" LANGU="E" DESCRIPT="SCREEN_PBO" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pbo.
+  set_instance = me. &quot;set last incase there are multiple reassignments in PBO
+*  set pf-status &apos;FRAME_TOOLBAR&apos; of program &apos;SAPLZ_SCREENS&apos;.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

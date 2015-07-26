@@ -1,0 +1,1690 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_SCREEN">
+ <CLAS CLSNAME="ZCL_SCREEN" VERSION="1" LANGU="E" DESCRIPT="Links function group screen to object" UUID="4DD81F7EE2D54B469B0370701A09747C" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130204" CHANGEDBY="ITAJR" CHANGEDON="20130407" CHGDANYON="00000000" CLSABSTRCT="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" RSTAT="S" R3RELEASE="620" CLSBCCAT="00">
+  <types CLSNAME="ZCL_SCREEN" CMPNAME="TYS_SCREENS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="206 " SRCCOLUMN2="21 "/>
+  <types CLSNAME="ZCL_SCREEN" CMPNAME="TYT_OBJECTS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" TYPTYPE="4" SRCROW1="208 " SRCCOLUMN1="4 " SRCROW2="208 " SRCCOLUMN2="42 "/>
+  <publicSection>class ZCL_SCREEN definition
+  public
+  abstract
+  create public .
+
+*&quot;* public components of class ZCL_SCREEN
+*&quot;* do not include other source files here!!!
+public section.
+
+  data SCREENGROUP type SYREPID read-only .
+  data SCREENNUMBER type DYNNR read-only .
+
+  class-methods CALL_PBO .
+  methods CONSTRUCTOR
+    importing
+      !PV_PROGRAM_OF_SCREEN type PROGNAME
+      !PV_SCREEN_NUMBER type DYNNR .</publicSection>
+  <protectedSection>*&quot;* protected components of class ZCL_SCREEN
+*&quot;* do not include other source files here!!!
+protected section.
+
+  methods GET_ELEMENTS
+    changing
+      !PS_ELEMENTS type DATA .</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_SCREEN
+*&quot;* do not include other source files here!!!
+private section.
+
+  types:
+    begin of tys_screens,
+      s001  type ref to data,
+      s002  type ref to data,
+      s003  type ref to data,
+      s004  type ref to data,
+      s005  type ref to data,
+      s006  type ref to data,
+      s007  type ref to data,
+      s008  type ref to data,
+      s009  type ref to data,
+      s010  type ref to data,
+      s011  type ref to data,
+      s012  type ref to data,
+      s013  type ref to data,
+      s014  type ref to data,
+      s015  type ref to data,
+      s016  type ref to data,
+      s017  type ref to data,
+      s018  type ref to data,
+      s019  type ref to data,
+      s020  type ref to data,
+      s021  type ref to data,
+      s022  type ref to data,
+      s023  type ref to data,
+      s024  type ref to data,
+      s025  type ref to data,
+      s026  type ref to data,
+      s027  type ref to data,
+      s028  type ref to data,
+      s029  type ref to data,
+      s030  type ref to data,
+      s031  type ref to data,
+      s032  type ref to data,
+      s033  type ref to data,
+      s034  type ref to data,
+      s035  type ref to data,
+      s036  type ref to data,
+      s037  type ref to data,
+      s038  type ref to data,
+      s039  type ref to data,
+      s040  type ref to data,
+      s041  type ref to data,
+      s042  type ref to data,
+      s043  type ref to data,
+      s044  type ref to data,
+      s045  type ref to data,
+      s046  type ref to data,
+      s047  type ref to data,
+      s048  type ref to data,
+      s049  type ref to data,
+      s050  type ref to data,
+      s051  type ref to data,
+      s052  type ref to data,
+      s053  type ref to data,
+      s054  type ref to data,
+      s055  type ref to data,
+      s056  type ref to data,
+      s057  type ref to data,
+      s058  type ref to data,
+      s059  type ref to data,
+      s060  type ref to data,
+      s061  type ref to data,
+      s062  type ref to data,
+      s063  type ref to data,
+      s064  type ref to data,
+      s065  type ref to data,
+      s066  type ref to data,
+      s067  type ref to data,
+      s068  type ref to data,
+      s069  type ref to data,
+      s070  type ref to data,
+      s071  type ref to data,
+      s072  type ref to data,
+      s073  type ref to data,
+      s074  type ref to data,
+      s075  type ref to data,
+      s076  type ref to data,
+      s077  type ref to data,
+      s078  type ref to data,
+      s079  type ref to data,
+      s080  type ref to data,
+      s081  type ref to data,
+      s082  type ref to data,
+      s083  type ref to data,
+      s084  type ref to data,
+      s085  type ref to data,
+      s086  type ref to data,
+      s087  type ref to data,
+      s088  type ref to data,
+      s089  type ref to data,
+      s090  type ref to data,
+      s091  type ref to data,
+      s092  type ref to data,
+      s093  type ref to data,
+      s094  type ref to data,
+      s095  type ref to data,
+      s096  type ref to data,
+      s097  type ref to data,
+      s098  type ref to data,
+      s099  type ref to data,
+      s100  type ref to data,
+      s101  type ref to data,
+      s102  type ref to data,
+      s103  type ref to data,
+      s104  type ref to data,
+      s105  type ref to data,
+      s106  type ref to data,
+      s107  type ref to data,
+      s108  type ref to data,
+      s109  type ref to data,
+      s110  type ref to data,
+      s111  type ref to data,
+      s112  type ref to data,
+      s113  type ref to data,
+      s114  type ref to data,
+      s115  type ref to data,
+      s116  type ref to data,
+      s117  type ref to data,
+      s118  type ref to data,
+      s119  type ref to data,
+      s120  type ref to data,
+      s121  type ref to data,
+      s122  type ref to data,
+      s123  type ref to data,
+      s124  type ref to data,
+      s125  type ref to data,
+      s126  type ref to data,
+      s127  type ref to data,
+      s128  type ref to data,
+      s129  type ref to data,
+      s130  type ref to data,
+      s131  type ref to data,
+      s132  type ref to data,
+      s133  type ref to data,
+      s134  type ref to data,
+      s135  type ref to data,
+      s136  type ref to data,
+      s137  type ref to data,
+      s138  type ref to data,
+      s139  type ref to data,
+      s140  type ref to data,
+      s141  type ref to data,
+      s142  type ref to data,
+      s143  type ref to data,
+      s144  type ref to data,
+      s145  type ref to data,
+      s146  type ref to data,
+      s147  type ref to data,
+      s148  type ref to data,
+      s149  type ref to data,
+      s150  type ref to data,
+      s151  type ref to data,
+      s152  type ref to data,
+      s153  type ref to data,
+      s154  type ref to data,
+      s155  type ref to data,
+      s156  type ref to data,
+      s157  type ref to data,
+      s158  type ref to data,
+      s159  type ref to data,
+      s160  type ref to data,
+      s161  type ref to data,
+      s162  type ref to data,
+      s163  type ref to data,
+      s164  type ref to data,
+      s165  type ref to data,
+      s166  type ref to data,
+      s167  type ref to data,
+      s168  type ref to data,
+      s169  type ref to data,
+      s170  type ref to data,
+      s171  type ref to data,
+      s172  type ref to data,
+      s173  type ref to data,
+      s174  type ref to data,
+      s175  type ref to data,
+      s176  type ref to data,
+      s177  type ref to data,
+      s178  type ref to data,
+      s179  type ref to data,
+      s180  type ref to data,
+      s181  type ref to data,
+      s182  type ref to data,
+      s183  type ref to data,
+      s184  type ref to data,
+      s185  type ref to data,
+      s186  type ref to data,
+      s187  type ref to data,
+      s188  type ref to data,
+      s189  type ref to data,
+      s190  type ref to data,
+      s191  type ref to data,
+      s192  type ref to data,
+      s193  type ref to data,
+      s194  type ref to data,
+      s195  type ref to data,
+      s196  type ref to data,
+      s197  type ref to data,
+      s198  type ref to data,
+      s199  type ref to data,
+    end of tys_screens .
+  types:
+    TYT_objects type table of ref to object .
+
+  class-data CTLRS type TYS_SCREENS .
+  class-data:
+    INSTANCENUM type n length 3 .
+  data T_ELEMENTS type TYT_OBJECTS .
+
+  methods CONSTRUCTOR620
+    importing
+      !PV_PROGRAM_OF_SCREEN type PROGNAME
+      !PV_SCREEN_NUMBER type DYNNR .
+  methods PBO .</privateSection>
+  <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+  <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_SCREEN" CMPNAME="CTLRS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="TYS_SCREENS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <attribute CLSNAME="ZCL_SCREEN" CMPNAME="INSTANCENUM" VERSION="1" LANGU="E" DESCRIPT="Number of the following screen" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="212 " SRCCOLUMN1="4 " SRCROW2="212 " SRCCOLUMN2="30 "/>
+  <attribute CLSNAME="ZCL_SCREEN" CMPNAME="SCREENGROUP" VERSION="1" LANGU="E" DESCRIPT="ABAP program, current main program" EXPOSURE="2" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SYREPID" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREEN" CMPNAME="SCREENNUMBER" VERSION="1" LANGU="E" DESCRIPT="Number of the following screen" EXPOSURE="2" STATE="1" EDITORDER="4 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DYNNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SCREEN" CMPNAME="T_ELEMENTS" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="TYT_OBJECTS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 "/>
+  <method CLSNAME="ZCL_SCREEN" CMPNAME="CALL_PBO" VERSION="1" LANGU="E" DESCRIPT="Internal Use Only" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method call_pbo.
+
+  data:
+    lo_weakref      type ref to cl_abap_weak_reference,
+    lo_screen       type ref to zcl_screen,
+    lo_selscreen    type ref to zcl_selectionscreen,
+    lo_screenframe  type ref to zcl_screenframe.
+
+  field-symbols:
+    &lt;screendataref&gt; type ref to data,
+    &lt;s_screendata&gt;  type any,
+    &lt;o_weakref&gt;     type ref to object.
+
+
+  do instancenum times.
+    assign component sy-index of structure ctlrs to &lt;screendataref&gt;.
+    assign &lt;screendataref&gt;-&gt;* to &lt;s_screendata&gt;.
+    if sy-subrc eq 0. &quot;Should always have value - put in for testing.
+
+      assign component &apos;CTLR&apos; of structure &lt;s_screendata&gt; to &lt;o_weakref&gt;.
+      lo_weakref ?= &lt;o_weakref&gt;.
+      lo_screen ?= lo_weakref-&gt;get( ).
+
+      if  lo_screen is not initial
+          and
+          lo_screen-&gt;screennumber eq sy-dynnr.
+
+        lo_screen-&gt;pbo( ).
+
+        try.
+            lo_selscreen ?= lo_screen.
+            lo_selscreen-&gt;pbo( ).
+          catch cx_sy_move_cast_error.
+            try.
+                lo_screenframe ?= lo_screen.
+                lo_screenframe-&gt;pbo( ).
+              catch cx_sy_move_cast_error.
+            endtry.
+        endtry.
+
+      else.
+        &quot;clear memory - screen is no longer referenced anywhere.
+      endif.
+    endif.
+  enddo.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREEN" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130217" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREEN" CMPNAME="CONSTRUCTOR" SCONAME="PV_PROGRAM_OF_SCREEN" VERSION="1" LANGU="E" DESCRIPT="ABAP Program Name" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="PROGNAME"/>
+   <parameter CLSNAME="ZCL_SCREEN" CMPNAME="CONSTRUCTOR" SCONAME="PV_SCREEN_NUMBER" VERSION="1" LANGU="E" DESCRIPT="Number of the following screen" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DYNNR"/>
+   <source>method CONSTRUCTOR .
+* PV_PROGRAM_OF_SCREEN  TYPE PROGNAME ABAP Program Name
+* PV_SCREEN_NUMBER      TYPE DYNNR  Number of the following screen
+* PS_ELEMENTS	          TYPE REF TO DATA
+
+  IF sy-saprl &lt; 700. &quot;//TODO confirm version that create structure method is available.
+    constructor620(
+      PV_PROGRAM_OF_SCREEN = PV_PROGRAM_OF_SCREEN
+      PV_SCREEN_NUMBER = PV_SCREEN_NUMBER ).
+  ENDIF.
+*
+*  types:
+*    begin of tys_screenid,
+*      prog  type progname,
+*      dynr  type dynnr,
+*    end of tys_screenid .
+*
+*  data:
+*    ls_screen_header  type d020s,
+*    lt_d021s          type table of d021s, ls_d021s     type d021s,
+*    lt_d021snew       type table of d021s, ls_d021snew  type d021s,
+*    lt_flowlogic      type dyn_flowlist,
+*    ls_flowlogic      like line of lt_flowlogic,
+*    lt_params         type table of d023s,
+*    ls_screens        type tys_screenid,
+*
+*    f1(100),
+*    f2(100),
+*    f3(100).
+*
+*  ls_screens-prog = pv_program_of_screen.
+*  ls_screens-dynr = pv_screen_number.
+*
+*  import dynpro
+*    ls_screen_header
+*    lt_d021s
+*    lt_flowlogic
+*    lt_params
+*  id ls_screens.
+*  if sy-subrc ne 0.
+*    message &apos;Dynpro Definition not found&apos; type &apos;I&apos;.
+*    exit.
+*  endif.
+*
+**  TESTING
+***********************************************************************
+**call function &apos;ALV_TABLE_CREATE&apos;
+**starting new task &apos;new&apos;
+**  exporting
+**    it_fieldcat                     =
+**    i_callback_program              = sy-repid
+**    i_formname                      =
+***   I_TABNAME                       = &apos;1&apos;
+***   I_STYLE_TABLE                   =
+***   I_OO_CLASS_REFERENCE            =
+***   I_OO_CLASS_NAME                 =
+***   I_OO_METHOD                     =
+***   I_LENGTH_IN_BYTE                =
+*** EXCEPTIONS
+***   GENERATE_SUBPOOL_DIR_FULL       = 1
+***   OTHERS                          = 2
+**          .
+**if sy-subrc &lt;&gt; 0.
+*** MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+***         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+**endif.
+**
+***CL_ALV_TABLE_CREATE=&gt;CREATE_DYNAMIC_TABLE( )
+**TYPE-POOLS: abap.
+**data t_comp type abap_componentdescr.
+***********************************************************************
+*
+***********************************************************************
+*  constants:
+*    c_screenarea  type d021s-fill value &apos;B&apos;, &quot;Bildschirm
+*    c_tabstrip    type d021s-fill value &apos;I&apos;,
+*    c_pushbutton  type d021s-fill value &apos;P&apos;,
+*    c_box         type d021s-fill value &apos;R&apos;,
+*    c_field_elem  type d021s-fill value &apos;&apos;.
+*
+*  data: &quot;Extention of Constants
+*     r_ityp  type range of c, rs_ityp like line of r_ityp value &apos;IEQ&apos;.
+*  rs_ityp-low = &apos;0&apos;. append rs_ityp to r_ityp. &quot;Indicates data dictinary
+*  rs_ityp-low = &apos;1&apos;. append rs_ityp to r_ityp. &quot;DDIC linked short text.
+*  rs_ityp-low = &apos;2&apos;. append rs_ityp to r_ityp. &quot;DDIC linked medium text.
+*  rs_ityp-low = &apos;3&apos;. append rs_ityp to r_ityp. &quot;DDIC linked long text.
+*  rs_ityp-low = &apos;4&apos;. append rs_ityp to r_ityp. &quot;DDIC linked title text.
+*  rs_ityp-low = &apos;F&apos;. append rs_ityp to r_ityp. &quot;DDIC linked fixed text.
+*  rs_ityp-low = &apos;V&apos;. append rs_ityp to r_ityp. &quot;DDIC linked variable tex
+*
+*  types:
+*    begin of tys_screenarea,
+*      name    type d021s-fnam,
+*      include type d021s-fnam,
+*    end of tys_screenarea.
+*
+*  data:
+*    lv_field_prfx type d021s-fnam value &apos;ZCL_SCREENCTLR=&gt;CTLRS-S$-&gt;&apos;, &quot;screenrefprefix
+*    tabix         type i,
+*
+*    lo_tabstrip   type ref to zcl_tabstrip,
+*    lv_tab_idx    type n length 2,
+*
+*    lo_screenarea type ref to zcl_subscreenarea,
+*    lt_screenarea type table of tys_screenarea, ls_screenarea like line of lt_screenarea,
+*
+*    lo_button     type ref to zcl_tabbutton,
+*
+*    lo_field    type ref to zcl_screenfield,
+*
+*    element     like line of t_elements,
+*    components  type abap_component_tab, component like line of components,
+*
+*    type,
+*    num_comp    type i,
+*    lo_weakref  type ref to cl_abap_weak_reference.
+*
+*  field-symbols:
+*    &lt;p_element&gt;   type any,
+*    &lt;ps_elements&gt; type any.
+*
+*
+*  add 1 to instancenum.
+*  replace first occurrence of &apos;$&apos; in lv_field_prfx with instancenum.
+*
+*
+*  assign ps_elements-&gt;* to &lt;ps_elements&gt;.
+*
+*  describe field &lt;ps_elements&gt; type type components num_comp. &quot;components addition needed for non-unicode programs.
+*  if type ne &apos;u&apos; and type ne &apos;v&apos;. &quot;Flat and Deep structures.
+*    return.&quot;exception raised.
+*  endif.
+*
+*  component-name = &apos;CTLR&apos;.
+**  component-type stays the same and therefore is set for this and subsequant use.
+**  if add initial assigning is used then this intention can be coded explicitly
+**  without adding overhead.
+**  component-type ?= cl_abap_datadescr=&gt;describe_by_name( &apos;CL_ABAP_WEAK_REFERENCE&apos; ).
+*  component-type ?= cl_abap_datadescr=&gt;describe_by_data( element ).
+*  append component to components.
+*
+*
+*  do.
+*    add 1 to tabix.
+*    read table lt_d021s index tabix into ls_d021s.
+*    if sy-subrc &lt;&gt; 0. exit. endif.
+*
+*    case ls_d021s-fill.
+*
+*      when c_screenarea.
+**    ***************************************************************
+**      Create component
+*        create object lo_screenarea
+*          exporting
+*            pv_name = ls_d021s-fnam.
+*
+**       Add to screen element structure
+*        append lo_screenarea to t_elements.
+*        component-name = ls_d021s-fnam.
+*        append component to components.
+*
+**       Add to user elements
+*        assign component ls_d021s-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*        if sy-subrc eq 0.
+*          &lt;p_element&gt; = lo_screenarea.
+*        endif.
+*
+**      Screen instance attribute creation
+*        ls_screenarea-name = ls_d021s-fnam.
+*        concatenate lv_field_prfx ls_d021s-fnam into ls_screenarea-include.
+*        append ls_screenarea to lt_screenarea.
+*
+*      when c_tabstrip.
+**    ***************************************************************
+**      Create component
+**       Create tabstrip (get lines of included componenets from main elements table to pass as contructor parameter)
+**       *********************************************************************
+*        data:
+*          lv_tabnum   type n length 2,
+*          controlname type string,
+*          lt_subd021s type table of d021s, ls_subd021s type d021s.
+*        clear lv_tabnum.
+*        clear lt_subd021s.
+*
+*        loop at lt_d021s from tabix into ls_subd021s.
+*
+*          case ls_subd021s-ltyp.
+*            when &apos;J&apos;.
+*              lv_tab_idx = lv_tab_idx + 1.
+*              concatenate  &apos;TABSTRIP&apos;  lv_tab_idx  into ls_subd021s-fnam.
+*            when &apos;I&apos;.
+*              if ls_subd021s-fill eq c_pushbutton.
+*                add 1 to lv_tabnum.
+*              endif.
+*              add 1 to tabix.
+*            when others.
+*              exit.
+*          endcase.
+*
+*          append ls_subd021s to lt_subd021s.
+*
+*        endloop.
+*
+*        field-symbols &lt;control&gt; type cxtab_tabstrip.
+*        data  controlref  type ref to cxtab_tabstrip.
+*
+*        concatenate &apos;(SAPLZ_SCREENS)TABSTRIP&apos; lv_tab_idx into controlname.
+*        call function &apos;Z_INITALISE_SCREEN_MEMORY&apos;.&quot;instantiate_function_memory
+*        assign (controlname) to &lt;control&gt;.
+*        get reference of &lt;control&gt; into controlref.
+*
+*        create object lo_tabstrip
+*          exporting
+*            pv_name         = ls_d021s-fnam
+*            ps_control      = controlref
+*            pv_numberoftabs = lv_tabnum.
+*
+**       Add to screen element structure
+*        append lo_tabstrip to t_elements.
+*        component-name = ls_d021s-fnam.
+*        append component to components.
+*
+**       Add to user elements
+*        assign component ls_d021s-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*        if sy-subrc eq 0.
+*          &lt;p_element&gt; = lo_tabstrip.
+*        endif.
+*
+*        lo_tabstrip-&gt;modify_screenattributes( changing pt_d021s = lt_subd021s ).
+*
+*        clear lv_tabnum.
+*
+*        loop at lt_subd021s into ls_subd021s.
+*          case ls_subd021s-fill. &quot;Sub Include elements
+*
+*            when c_pushbutton.
+**          *********************************************************
+*              create object lo_button
+*                exporting
+*                  pv_name = ls_subd021s-fnam.
+*
+*              lo_button-&gt;set_label( ls_subd021s-fnam ).
+*              lo_tabstrip-&gt;append_tab( lo_button ).
+*
+**             Add to screen element structure
+*              append lo_button to t_elements.
+*              component-name = ls_subd021s-fnam.
+*              append component to components.
+*
+**             Add to user elements
+*              assign component ls_subd021s-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*              if sy-subrc eq 0.
+*                &lt;p_element&gt; = lo_button.
+*              endif.
+*
+*              add 1 to lv_tabnum.
+*              concatenate lv_field_prfx ls_d021s-fnam &apos;-&gt;TABS-T&apos; lv_tabnum into ls_subd021s-fnam.
+*              modify lt_subd021s from ls_subd021s.
+*
+*            when c_screenarea.
+**          *********************************************************
+*              ls_screenarea-name = ls_subd021s-fnam.
+*              concatenate lv_field_prfx ls_d021s-fnam &apos;-&gt;SCR&apos; into ls_screenarea-include.
+*              append ls_screenarea to lt_screenarea.
+*
+*          endcase.
+*        endloop.
+*
+*        append lines of lt_subd021s to lt_d021snew. &quot;Add updated element attributes to instance table
+*        continue.
+*
+*
+*      when c_pushbutton.
+**    *********************************************************
+**     Create component
+*        create object lo_button
+*          exporting
+*            pv_name = ls_d021s-fnam.
+*
+*        lo_button-&gt;set_label( ls_d021s-fnam ).
+*        ls_d021s-res1 = zcl_ucomm_dispatcher=&gt;add_listener( lo_button ).
+*        shift ls_d021s-res1 right by 168 places.
+*
+**       Add to screen element structure
+*        append lo_button to t_elements.
+*        component-name = ls_d021s-fnam.
+*        append component to components.
+*
+**       Add to user elements
+*        assign component ls_d021s-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*        if sy-subrc eq 0.
+*          &lt;p_element&gt; = lo_button.
+*        endif.
+*
+**     Screen instance attributes modification
+*        concatenate  lv_field_prfx  ls_d021s-fnam &apos;-&gt;LABEL&apos;  into ls_d021s-fnam.
+*
+*      when c_box.
+**    *********************************************************
+**     Screen instance attribute creation
+*        concatenate  lv_field_prfx  ls_d021s-fnam  into ls_d021s-fnam.
+*
+*
+*      when others. &quot;ls_screen_element-type EQ &apos;CHAR&apos; OR ls_screen_elem
+**      when c_field_elem.
+**    ***************************************************************
+**     Create component
+**       create text label object with specific methods for the text type, and with text reference.
+*        if ls_d021s-ltyp ne &apos;O&apos;. &quot;Not OK CODE
+*          condense ls_d021s-res1.
+*          if  ls_d021s-res1 cp &apos;00&apos;
+*              and
+*              ls_d021s-flg1 eq &apos;80&apos;
+**             ls_d021s-flg3 EQ &apos;88&apos;. &quot;can also equal 80 for uninvestigated reasons.
+*              and
+*              ls_d021s-fmb1 eq &apos;00&apos;.
+*
+**            read table pt_scr_element_symbols index tabix into ls_element_symbols. &quot;(Set in name symbol (instance) creation above.)
+*
+*            create object lo_field
+*              exporting
+*                pv_name       = ls_d021s-fnam
+*                pv_screenname = ls_d021s-fnam.
+*
+*            append lo_field to t_elements.
+*
+*            component-name = ls_d021s-fnam.
+*            append component to components.
+*
+*            assign component ls_d021s-fnam of structure &lt;ps_elements&gt; to &lt;p_element&gt;.
+*            if sy-subrc eq 0.
+*              &lt;p_element&gt; = lo_field.
+*            endif.
+*          endif.
+*        endif.
+*
+**     Screen instance attribute creation
+*        if ls_d021s-ltyp eq &apos;O&apos;. &quot;Always OK CODE?
+*          ls_d021s-fnam = &apos;OK_CODE&apos;. &quot;(only used if non-subscreen - doesn&apos;t seem to cause error if specified regardless)
+*        elseif ls_d021s-ityp not in r_ityp. &quot;(Do not rename DDIC
+**          ls_element_symbols-fnam = ls_d021s-fnam. &quot;(Needed for use in zcl_screenfield constructor)
+*          concatenate  lv_field_prfx  ls_d021s-fnam &apos;-&gt;VAL-&gt;*&apos; into ls_d021s-fnam.
+**         -If field name is too long then raise exception.
+*
+*          if ls_d021s-type = &apos;CURR&apos;. &quot;//TODO Need to properly handle/link currency fields.
+*            ls_d021s-type = &apos;DEC&apos;.
+*          endif.
+*        endif.
+*
+*    endcase.
+*
+*    append ls_d021s to lt_d021snew.
+*
+*  enddo.
+*
+*
+** Create Screen Elements reference structure.
+*  data:
+*    structype   type ref to cl_abap_structdescr,
+*    s_elements  type ref to data.
+*
+*  field-symbols:
+*    &lt;elements&gt;  type any,
+*    &lt;element&gt;   type ref to object,
+*    &lt;name&gt;      type d021s-fnam.
+*
+*
+** Generate the custom structure.
+*  structype = cl_abap_structdescr=&gt;create( components ).
+*  create data s_elements type handle structype.
+*  assign s_elements-&gt;* to &lt;elements&gt;.
+*
+** Add reference to screenctlr as first element.
+*  create object lo_weakref
+*    exporting
+*      oref = me.
+*  assign component &apos;CTLR&apos; of structure &lt;elements&gt; to &lt;element&gt;.
+*  &lt;element&gt; = lo_weakref.
+*
+** Add screen element objects to remaining elements where a nameslot has been created for each one.
+*  loop at t_elements into element.
+*    assign element-&gt;(&apos;name&apos;) to &lt;name&gt;. &quot;Should be interface.
+*    assign component &lt;name&gt; of structure &lt;elements&gt; to &lt;element&gt;.
+*    if sy-subrc eq 0.
+*      &lt;element&gt; = element.
+*    endif.
+*  endloop.
+*
+*
+** Add a reference of the Screen Elements structure to the static screenctlr screen list.
+*  data:
+*    structi type i.
+*  field-symbols:
+*    &lt;sxxx&gt;  type ref to data.
+*
+*  structi = instancenum.
+*  assign component structi of structure zcl_screen=&gt;ctlrs to &lt;sxxx&gt;.
+*  &lt;sxxx&gt; = s_elements.
+*
+*
+*
+*
+** Build Screen Logic
+***********************************************************************
+*  clear lt_flowlogic.
+*  append &apos;PROCESS BEFORE OUTPUT.&apos; to lt_flowlogic.
+*
+*  append &apos;MODULE screen.&apos; to lt_flowlogic.
+*
+*  loop at lt_screenarea into ls_screenarea.
+*    concatenate &apos;CALL SUBSCREEN&apos; ` ` ls_screenarea-name ` ` &apos;INCLUDING&apos; into ls_flowlogic.
+*    append ls_flowlogic to lt_flowlogic.
+*
+*    concatenate ls_screenarea-include &apos;-&gt;PROG&apos; into ls_flowlogic.
+*    append ls_flowlogic to lt_flowlogic.
+*    concatenate ls_screenarea-include &apos;-&gt;DYNR.&apos; into ls_flowlogic.
+*    append ls_flowlogic to lt_flowlogic.
+*  endloop.
+*
+*  append &apos;MODULE screen_fields.&apos; to lt_flowlogic.
+*
+*
+*  append &apos;PROCESS AFTER INPUT.&apos; to lt_flowlogic.
+*
+*  loop at lt_screenarea into ls_screenarea.
+*    concatenate &apos;CALL SUBSCREEN&apos; ` ` ls_screenarea-name &apos;.&apos; into ls_flowlogic.
+*    append ls_flowlogic to lt_flowlogic.
+*  endloop.
+*
+*  append &apos;MODULE screen.&apos; to lt_flowlogic.
+***********************************************************************
+*
+*
+*
+** Create Screen Instance
+***********************************************************************
+*  data:
+*    lo_abap_objectdescr type ref to cl_abap_objectdescr.
+*
+*  lo_abap_objectdescr ?= cl_abap_objectdescr=&gt;describe_by_object_ref( me ).
+*
+*  if lo_abap_objectdescr-&gt;absolute_name = &apos;\CLASS=ZCL_SCREENFRAME&apos;.
+**  if ls_screens-dynr eq zcl_screenframe=&gt;screen_definition_number and ls_screens-prog eq &apos;SAPLZ_SCREENS&apos;.
+*    clear ls_screen_header-type.
+*    if zcl_screenframe=&gt;IS_APPTOOLBAR_ENABLED eq &apos;X&apos;.
+*      ls_screen_header-mili = 192.
+*    else.
+*      ls_screen_header-mili = 196.
+*    endif.
+*  else.
+*    ls_screen_header-type = &apos;I&apos;. &quot;All screens declared as subscreens and framed in a standard outer on z_callscreen
+*  endif.
+*
+*  &quot;All screens instantiated in Z_SCREENS function pool therefore constant
+*  screengroup = ls_screens-prog = ls_screen_header-prog = &apos;SAPLZ_SCREENS&apos;. &quot;Defaulted
+*  screennumber = ls_screens-dynr = ls_screen_header-dnum = ls_screen_header-fnum = &apos;0&apos; &amp;&amp; instancenum.
+*
+*  delete dynpro screennumber. &quot;Clear any previous instance remnants.
+*
+*  generate dynpro
+*  ls_screen_header
+*  lt_d021snew
+*  lt_flowlogic
+*  lt_params
+*  id ls_screens
+*  message f1 line f2 word f3.
+*  if sy-subrc &lt;&gt; 0.
+**       SY-SUBRC = 0: The screen was generated.
+**       SY-SUBRC = 4: The error is in the flow logic.
+**       SY-SUBRC = 8: The error is in the field list.
+*  endif.
+*
+*
+*
+** Notes
+***********************************************************************
+** Could have test for z_screens function pool and module existance
+** - if not then could generate dynamically for complete independence.
+*
+*
+** CL_SYSTEM_TRANSACTION_STATE=&gt;TRANSACTION_FINISHED
+** CALL METHOD cl_gui_cfw=&gt;set_new_ok_code( &apos;DETAIL&apos; ).
+**  data aaa type ref to
+**        CL_GUI_CONTROL.
+**        CL_GUI_OBJECT.
+*
+**method get_screenctlr_name .
+***SCREEN_CTLR      Importing Type Ref To ZCL_SCREENHOOK
+***SCREEN_CTLR_NAME Returning Type  PROGNAME
+**
+**  data:
+**        lo_typedescr  type ref to cl_abap_typedescr.
+**
+**
+***Procedure to get super class name so that if class is inherited it can
+***Would therefore need to return range of names starting with the base cl
+************************************************************************
+***  lo_classdescr  TYPE REF TO cl_abap_classdescr.
+**
+***  lo_classdescr ?= cl_abap_classdescr=&gt;describe_by_object_ref( screen_c
+***  lo_typedescr = lo_classdescr-&gt;get_super_class_type( ).
+****  screen_ctlr_name = lo_typedescr-&gt;get_relative_name( ).
+***  screen_ctlr_name = lo_typedescr-&gt;absolute_name.
+************************************************************************
+**
+**  lo_typedescr = cl_abap_typedescr=&gt;describe_by_object_ref( SCREEN_CTLR ).
+***  screen_ctlr_name = descr_ref-&gt;get_relative_name( ).
+**  screen_ctlr_name = lo_typedescr-&gt;absolute_name.
+**
+**endmethod.
+*
+*
+**method get_dynnr .
+***PV_SCREENCTLR_NAME Importing Type  D020T-DTXT
+***PT_SCREENS         Returning Type  TYS_SCREENS
+**
+**  select
+**  d020t~prog
+**  d020t~dynr
+**  into table PT_SCREENS
+**  from d020t
+**  where
+**  dtxt eq pv_screenctlr_name.
+**
+**  if PT_SCREENS is initial.
+**    message &apos;Associated Screen Not Found&apos; type &apos;S&apos;.
+**  endif.
+**
+**endmethod.
+*
+*
+**method refresh_references.
+**
+**  field-SYMBOLS:
+**  &lt;fs0&gt;  type any,
+**  &lt;fs1&gt;  type any.
+**
+**
+**  do.
+**    assign component sy-index of structure s_fields to &lt;fs0&gt;.
+**    if sy-subrc eq 0.
+**      assign &lt;fs0&gt;-&gt;* to &lt;fs0&gt;. &quot;Possible error if no fields have been assigned?
+**
+**      if &lt;fs0&gt; is not initial.
+**        assign component sy-index of structure s_fields to &lt;fs1&gt;.
+**        get reference of &lt;fs0&gt; into &lt;fs1&gt;.
+**
+**      endif.
+**    else.
+**      exit.
+**    endif.
+**  enddo.
+**
+**endmethod.
+*
+*
+**Code for future reference.
+***********************************************************************
+**cl_swf_utl_iterator.
+*
+**  CALL FUNCTION &apos;RPY_DYNPRO_READ_NATIVE&apos;
+*
+**    MESSAGE E004 WITH DYNP_ID  RAISING NOT_FOUND.
+*
+** Dynprobeschreibungstext importieren
+**  CLEAR DYNPROTEXT.
+**  SELECT SINGLE * FROM  D020T
+**  WHERE  PROG        = PROGNAME
+**  AND    DYNR        = DYNNUMB
+**  AND    LANG        = HEADER-SPRA.
+**  DYNPROTEXT = D020T-DTXT.
+**
+*** dynprobezogene Feldtexte importieren
+**  REFRESH FIELDTEXTS.
+**  SELECT        * FROM  D021T  INTO TABLE FIELDTEXTS
+**  WHERE  PROG        = PROGNAME
+**  AND    DYNR        = DYNNUMB
+**  AND    LANG        = HEADER-SPRA.
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREEN" CMPNAME="CONSTRUCTOR620" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREEN" CMPNAME="CONSTRUCTOR620" SCONAME="PV_PROGRAM_OF_SCREEN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="PROGNAME"/>
+   <parameter CLSNAME="ZCL_SCREEN" CMPNAME="CONSTRUCTOR620" SCONAME="PV_SCREEN_NUMBER" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DYNNR"/>
+   <source>method constructor620.
+* PV_PROGRAM_OF_SCREEN  TYPE PROGNAME ABAP Program Name
+* PV_SCREEN_NUMBER      TYPE DYNNR  Number of the following screen
+
+  types:
+    begin of tys_screenid,
+      prog  type progname,
+      dynr  type dynnr,
+    end of tys_screenid .
+
+  data:
+    ls_screen_header  type d020s,
+    lt_d021s          type table of d021s, ls_d021s     type d021s,
+    lt_d021snew       type table of d021s, ls_d021snew  type d021s,
+    lt_flowlogic      type dyn_flowlist,
+    ls_flowlogic      like line of lt_flowlogic,
+    lt_params         type table of d023s,
+    ls_screens        type tys_screenid,
+
+    f1(100),
+    f2(100),
+    f3(100).
+
+  ls_screens-prog = pv_program_of_screen.
+  ls_screens-dynr = pv_screen_number.
+
+  import dynpro
+    ls_screen_header
+    lt_d021s
+    lt_flowlogic
+    lt_params
+  id ls_screens.
+  if sy-subrc ne 0.
+    message &apos;Dynpro Definition not found&apos; type &apos;I&apos;.
+    exit.
+  endif.
+
+
+**********************************************************************
+  constants:
+    c_screenarea  type d021s-fill value &apos;B&apos;, &quot;Bildschirm
+    c_tabstrip    type d021s-fill value &apos;I&apos;,
+    c_pushbutton  type d021s-fill value &apos;P&apos;,
+    c_box         type d021s-fill value &apos;R&apos;,
+    c_container   type d021s-fill value &apos;U&apos;,
+    c_field_elem  type d021s-fill value &apos;&apos;.
+
+  data: &quot;Extention of Constants
+     r_ityp  type range of c, rs_ityp like line of r_ityp value &apos;IEQ&apos;.
+  rs_ityp-low = &apos;0&apos;. append rs_ityp to r_ityp. &quot;Indicates data dictinary
+  rs_ityp-low = &apos;1&apos;. append rs_ityp to r_ityp. &quot;DDIC linked short text.
+  rs_ityp-low = &apos;2&apos;. append rs_ityp to r_ityp. &quot;DDIC linked medium text.
+  rs_ityp-low = &apos;3&apos;. append rs_ityp to r_ityp. &quot;DDIC linked long text.
+  rs_ityp-low = &apos;4&apos;. append rs_ityp to r_ityp. &quot;DDIC linked title text.
+  rs_ityp-low = &apos;F&apos;. append rs_ityp to r_ityp. &quot;DDIC linked fixed text.
+  rs_ityp-low = &apos;V&apos;. append rs_ityp to r_ityp. &quot;DDIC linked variable tex
+
+  types:
+    begin of tys_screenarea,
+      name    type d021s-fnam,
+      include type d021s-fnam,
+    end of tys_screenarea.
+
+  data:
+    lv_field_prfx type d021s-fnam value &apos;ZCL_SCREEN=&gt;CTLRS-S$-&gt;&apos;, &quot;screenrefprefix
+    tabix         type i,
+
+    lo_tabstrip   type ref to zcl_tabstrip,
+    tabstripnum   type n length 2,
+
+    lo_screenarea type ref to zcl_subscreenarea,
+    lt_screenarea type table of tys_screenarea, ls_screenarea like line of lt_screenarea,
+
+    lo_button     type ref to zcl_tabbutton,
+
+    lo_field    type ref to zcl_screenfield,
+
+    element     like line of t_elements,
+
+    lo_weakref  type ref to cl_abap_weak_reference.
+
+  field-symbols:
+    &lt;p_element&gt;   type any,
+    &lt;ps_elements&gt; type any.
+
+
+  add 1 to instancenum.
+  replace first occurrence of &apos;$&apos; in lv_field_prfx with instancenum.
+
+
+
+  types:
+    begin of tys_elements,
+      ctlr  type ref to object,
+      e01   type ref to object,
+      e02   type ref to object,
+      e03   type ref to object,
+      e04   type ref to object,
+      e05   type ref to object,
+      e06   type ref to object,
+      e07   type ref to object,
+      e08   type ref to object,
+      e09   type ref to object,
+      e10   type ref to object,
+      e11   type ref to object,
+      e12   type ref to object,
+      e13   type ref to object,
+      e14   type ref to object,
+      e15   type ref to object,
+      e16   type ref to object,
+      e17   type ref to object,
+      e18   type ref to object,
+      e19   type ref to object,
+      e20   type ref to object,
+      e21   type ref to object,
+      e22   type ref to object,
+      e23   type ref to object,
+      e24   type ref to object,
+      e25   type ref to object,
+      e26   type ref to object,
+      e27   type ref to object,
+      e28   type ref to object,
+      e29   type ref to object,
+      e30   type ref to object,
+      e31   type ref to object,
+      e32   type ref to object,
+      e33   type ref to object,
+      e34   type ref to object,
+      e35   type ref to object,
+      e36   type ref to object,
+      e37   type ref to object,
+      e38   type ref to object,
+      e39   type ref to object,
+      e40   type ref to object,
+      e41   type ref to object,
+      e42   type ref to object,
+      e43   type ref to object,
+      e44   type ref to object,
+      e45   type ref to object,
+      e46   type ref to object,
+      e47   type ref to object,
+      e48   type ref to object,
+      e49   type ref to object,
+      e50   type ref to object,
+      e51   type ref to object,
+      e52   type ref to object,
+      e53   type ref to object,
+      e54   type ref to object,
+      e55   type ref to object,
+      e56   type ref to object,
+      e57   type ref to object,
+      e58   type ref to object,
+      e59   type ref to object,
+    end of tys_elements.
+
+  data:
+    s_elementrefs type ref to tys_elements,
+    screenname    type d021s-fnam,
+    elementnum    type n length 2 value 0.
+
+  field-symbols:
+    &lt;elementref&gt;  type ref to object.
+
+
+*  data:
+*    components  type abap_component_tab, component like line of components.
+*  component-name = &apos;CTLR&apos;.
+*  component-type stays the same and therefore is set for this and subsequant use.
+*  if add initial assigning is used then this intention can be coded explicitly
+*  without adding overhead.
+*  component-type ?= cl_abap_datadescr=&gt;describe_by_name( &apos;CL_ABAP_WEAK_REFERENCE&apos; ).
+*  component-type ?= cl_abap_datadescr=&gt;describe_by_data( element ).
+*  append component to components.
+
+
+* Add reference to screenctlr as first element.
+  create object lo_weakref
+    exporting
+      oref = me.
+  append lo_weakref to t_elements.
+
+
+  do.
+    add 1 to tabix.
+    read table lt_d021s index tabix into ls_d021s.
+    if sy-subrc &lt;&gt; 0. exit. endif.
+
+    case ls_d021s-fill.
+
+      when c_screenarea.
+*    ***************************************************************
+        add 1 to elementnum.
+        concatenate lv_field_prfx &apos;E&apos; elementnum into screenname.
+
+*       Create component
+        create object lo_screenarea
+          exporting
+            pv_name = ls_d021s-fnam
+            pv_screenname = screenname.
+        append lo_screenarea to t_elements.
+
+*       Screen instance attribute creation
+*        ls_d021s-fnam = screenname.
+
+*       Screen logic table addition.
+        ls_screenarea-name = ls_d021s-fnam.
+        ls_screenarea-include = screenname.
+        append ls_screenarea to lt_screenarea.
+
+
+      when c_tabstrip.
+*    ***************************************************************
+*      Create component
+*       Create tabstrip (get lines of included componenets from main elements table to pass as contructor parameter)
+*       *********************************************************************
+        data:
+          tabstripprefix  type d021s-fnam,
+          lv_tabnum       type n length 2,
+          lt_subd021s     type table of d021s, ls_subd021s type d021s.
+        clear lv_tabnum.
+        clear lt_subd021s.
+
+
+        add 1 to elementnum.
+        concatenate lv_field_prfx &apos;E&apos; elementnum &apos;-&gt;&apos; into tabstripprefix.
+        add 1 to tabstripnum.
+        concatenate &apos;TABSTRIP&apos;  tabstripnum  into screenname.
+
+        loop at lt_d021s from tabix into ls_subd021s.
+          case ls_subd021s-ltyp.
+            when &apos;J&apos;.
+              ls_subd021s-fnam = screenname.
+            when &apos;I&apos;.
+              if ls_subd021s-fill eq c_pushbutton.
+                add 1 to lv_tabnum.
+              endif.
+              add 1 to tabix.
+            when others.
+              exit.
+          endcase.
+
+          append ls_subd021s to lt_subd021s.
+        endloop.
+
+
+*       Get reference to  control field
+*       *********************************************************************
+        field-symbols:
+          &lt;control&gt;   type cxtab_tabstrip.
+        data:
+          controlname type string,
+          controlref  type ref to cxtab_tabstrip.
+
+        concatenate &apos;(SAPLZ_SCREENS)&apos; screenname into controlname.
+        call function &apos;Z_INITALISE_SCREEN_MEMORY&apos;.&quot;instantiate_function_memory
+        assign (controlname) to &lt;control&gt;.
+        get reference of &lt;control&gt; into controlref.
+*       *********************************************************************
+
+        create object lo_tabstrip
+          exporting
+            pv_name         = ls_d021s-fnam
+            pv_screenname   = screenname
+            ps_control      = controlref
+            pv_numberoftabs = lv_tabnum.
+        append lo_tabstrip to t_elements.
+
+        lo_tabstrip-&gt;modify_screenattributes( changing pt_d021s = lt_subd021s ).
+
+        clear lv_tabnum.
+
+        loop at lt_subd021s into ls_subd021s.
+          case ls_subd021s-fill. &quot;Sub Include elements
+
+            when c_pushbutton.
+*          *********************************************************
+              add 1 to lv_tabnum.
+              concatenate tabstripprefix &apos;TABS-&gt;T&apos; lv_tabnum  &apos;-&gt;LABEL&apos;  into screenname.
+
+              create object lo_button &quot;//TODO should perhaps be declared by the user and append to tabstrip manually.
+                exporting
+                  pv_name = ls_subd021s-fnam
+                  pv_screenname = screenname.
+              append lo_button to t_elements.
+
+*              lo_button-&gt;set_label( ls_subd021s-fnam ).
+              lo_tabstrip-&gt;append_tab( lo_button ).
+
+              ls_subd021s-fnam = screenname.
+              lo_button-&gt;screenfname = ls_subd021s-fnam. &quot;Makeshift solution to hide tabs
+
+            when c_screenarea.
+*          *********************************************************
+              concatenate  tabstripprefix  &apos;SCR&apos;  into screenname.
+
+              ls_screenarea-name = ls_subd021s-fnam.
+              ls_screenarea-include = screenname.
+              append ls_screenarea to lt_screenarea.
+
+
+          endcase.
+
+          modify lt_subd021s from ls_subd021s.
+        endloop.
+
+        append lines of lt_subd021s to lt_d021snew. &quot;Add updated element attributes to instance table
+        continue.
+
+
+      when c_pushbutton.
+*    *********************************************************
+        add 1 to elementnum.
+        concatenate &apos;E&apos; elementnum into screenname.
+
+*       Create component
+        create object lo_button
+          exporting
+            pv_name = ls_d021s-fnam
+            pv_screenname = screenname.
+
+        append lo_button to t_elements.
+
+*        lo_button-&gt;set_label( ls_d021s-fnam ).
+        ls_d021s-res1 = zcl_ucomm_dispatcher=&gt;add_listener( lo_button ).
+        shift ls_d021s-res1 right by 168 places.
+
+*       Screen instance attributes modification
+        concatenate  lv_field_prfx screenname &apos;-&gt;LABEL&apos;  into ls_d021s-fnam.
+
+
+      when c_box.
+*    *********************************************************
+*        add 1 to elementnum.
+*        concatenate &apos;E&apos; elementnum into screenname.
+*
+**       Screen instance attribute creation
+*        concatenate lv_field_prfx  screenname  &apos;-&gt;LABEL&apos; into ls_d021s-fnam.
+        add 1 to elementnum.
+        concatenate &apos;E&apos; elementnum into screenname.
+
+        create object lo_field
+          exporting
+            pv_name       = ls_d021s-fnam
+            pv_screenname = screenname.
+        append lo_field to t_elements.
+
+*        lo_field-&gt;set_value( ls_d021s-fnam ).
+
+*       Screen instance attribute creation
+        concatenate  lv_field_prfx  screenname &apos;-&gt;VAL-&gt;*&apos; into ls_d021s-fnam.
+
+
+      when c_container.
+
+
+      when others. &quot;ls_screen_element-type EQ &apos;CHAR&apos; OR ls_screen_elem
+*      when c_field_elem.
+*    ***************************************************************
+*       //TODO - create text label object with specific methods for the text type.
+
+        data res1 type d021s-res1.
+
+*       Create component
+        if ls_d021s-ltyp eq &apos;O&apos;. &quot;Always OK CODE?
+          ls_d021s-fnam = &apos;OK_CODE&apos;. &quot;(only used if non-subscreen - doesn&apos;t seem to cause error if specified regardless)
+        else. &quot;Not OK CODE
+
+          if ls_d021s-ityp not in r_ityp. &quot;(Do not rename or create objects for DDIC refererenced elements)
+*            res1 = ls_d021s-res1.
+*            condense res1.
+*            if  res1 cp &apos;00&apos;
+*                and
+*                ls_d021s-flg1 eq &apos;80&apos;
+**               ls_d021s-flg3 EQ &apos;88&apos;. &quot;can also equal 80 for uninvestigated reasons.
+*                and
+*                ls_d021s-fmb1 eq &apos;00&apos;.
+
+*              read table pt_scr_element_symbols index tabix into ls_element_symbols. &quot;(Set in name symbol (instance) creation above.)
+
+            add 1 to elementnum.
+            concatenate &apos;E&apos; elementnum into screenname.
+
+            create object lo_field
+              exporting
+                pv_name       = ls_d021s-fnam
+                pv_screenname = screenname.
+            append lo_field to t_elements.
+
+*            lo_field-&gt;set_value( ls_d021s-fnam ).
+
+
+*             Screen instance attribute creation
+            concatenate  lv_field_prfx  screenname &apos;-&gt;VAL-&gt;*&apos; into ls_d021s-fnam.
+            lo_field-&gt;screenfname = ls_d021s-fnam.
+
+            if ls_d021s-type = &apos;CURR&apos;. &quot;//TODO Need to properly handle/link currency fields.
+              ls_d021s-type = &apos;DEC&apos;.
+            endif.
+
+*            endif.
+
+          endif.
+
+        endif.
+
+    endcase.
+
+    append ls_d021s to lt_d021snew.
+
+  enddo.
+
+
+
+  data:
+    ref type ref to object.
+
+  field-symbols:
+    &lt;name&gt;  type d021s-fnam.
+
+
+*  Add screen elements to screen reference structure.
+**********************************************************************
+  create data s_elementrefs.
+
+  loop at t_elements into ref.
+    assign component sy-tabix of structure s_elementrefs-&gt;* to &lt;p_element&gt;.
+    if sy-subrc eq 0.
+      &lt;p_element&gt; ?= ref.
+    endif.
+  endloop.
+
+* Add a reference of the Screen Elements structure to the static screenctlr screen list.
+  data:
+    structi type i.
+  field-symbols:
+    &lt;sxxx&gt;  type ref to data.
+
+  structi = instancenum.
+  assign component structi of structure zcl_screen=&gt;ctlrs to &lt;sxxx&gt;.
+  if sy-subrc &lt;&gt; 0. &quot;No more slots available for screens
+**  TEST FOR GARBAGE COLLECTED SCREEN OBJECTS
+***********************************************************************#
+*    field-symbols:
+*     &lt;struct&gt; type data,
+*     &lt;object&gt; type ref to object.
+*
+*    data:
+*      lo_screen  type ref to zcl_screen,
+*      lo_weak    type ref to cl_abap_weak_reference.
+*
+*    do.
+*      assign component sy-index of structure zcl_screen=&gt;ctlrs to &lt;sxxx&gt;.
+*      if sy-subrc &lt;&gt; 0.
+*        exit. &quot;Reached end of ctlrs
+*      endif.
+*
+*      assign &lt;sxxx&gt;-&gt;* to &lt;struct&gt;.
+*      if sy-subrc &lt;&gt; 0.
+*        exit. &quot;Current ctlr entry is blank.
+*      endif.
+*
+*      assign component 1 of structure &lt;struct&gt; to &lt;object&gt;.
+*      lo_weak ?= &lt;object&gt;. &quot;Should always work as one is always created as part of the structure.
+*
+*      lo_screen ?= lo_weak-&gt;get( ). &quot;Test for screen still being alive.
+*      if lo_screen is initial.
+*        lo_screen = lo_screen.
+*      endif.
+*    enddo.
+**********************************************************************
+    leave program. &quot;Test for end of struct reached.
+  endif.
+  &lt;sxxx&gt; = s_elementrefs.
+**********************************************************************
+
+
+** Create Screen Elements reference structure.
+*  data:
+*    structype   type ref to cl_abap_structdescr,
+*    s_elements  type ref to data.
+*
+*  field-symbols:
+*    &lt;elements&gt;  type any,
+*    &lt;element&gt;   type ref to object,
+*    &lt;name&gt;      type d021s-fnam.
+*
+*
+** Generate the custom structure.
+**  structype = cl_abap_structdescr=&gt;create( components ).
+**  create data s_elements type handle structype.
+*  assign s_elements-&gt;* to &lt;elements&gt;.
+*
+** Add reference to screenctlr as first element.
+*  s_elementrefs-ctlr = lo_weakref.
+**  create object lo_weakref
+**    exporting
+**      oref = me.
+**  assign component &apos;CTLR&apos; of structure &lt;elements&gt; to &lt;element&gt;.
+**  &lt;element&gt; = lo_weakref.
+*
+*
+** Add screen element objects to remaining elements where a nameslot has been created for each one.
+*  loop at t_elements into element.
+*    assign element-&gt;(&apos;name&apos;) to &lt;name&gt;. &quot;Should be interface.
+*    assign component &lt;name&gt; of structure &lt;elements&gt; to &lt;element&gt;.
+*    if sy-subrc eq 0.
+*      &lt;element&gt; = element.
+*    endif.
+*  endloop.
+*
+*
+** Add a reference of the Screen Elements structure to the static screenctlr screen list.
+*  data:
+*    structi type i.
+*  field-symbols:
+*    &lt;sxxx&gt;  type ref to data.
+*
+*  structi = instancenum.
+*  assign component structi of structure zcl_screen=&gt;ctlrs to &lt;sxxx&gt;.
+*  &lt;sxxx&gt; = s_elements.
+
+
+
+
+* Build Screen Logic
+**********************************************************************
+  clear lt_flowlogic.
+  append &apos;PROCESS BEFORE OUTPUT.&apos; to lt_flowlogic.
+
+  append &apos;MODULE screen.&apos; to lt_flowlogic.
+
+  loop at lt_screenarea into ls_screenarea.
+    concatenate &apos;CALL SUBSCREEN&apos; ` ` ls_screenarea-name ` ` &apos;INCLUDING&apos; into ls_flowlogic.
+    append ls_flowlogic to lt_flowlogic.
+
+    concatenate ls_screenarea-include &apos;-&gt;PROG&apos; into ls_flowlogic.
+    append ls_flowlogic to lt_flowlogic.
+    concatenate ls_screenarea-include &apos;-&gt;DYNR.&apos; into ls_flowlogic.
+    append ls_flowlogic to lt_flowlogic.
+  endloop.
+
+  append &apos;MODULE screen_fields.&apos; to lt_flowlogic.
+
+
+  append &apos;PROCESS AFTER INPUT.&apos; to lt_flowlogic.
+
+  loop at lt_screenarea into ls_screenarea.
+    concatenate &apos;CALL SUBSCREEN&apos; ` ` ls_screenarea-name &apos;.&apos; into ls_flowlogic.
+    append ls_flowlogic to lt_flowlogic.
+  endloop.
+
+  append &apos;MODULE screen.&apos; to lt_flowlogic.
+**********************************************************************
+
+
+
+* Create Screen Instance
+**********************************************************************
+  data:
+    lo_abap_objectdescr type ref to cl_abap_objectdescr.
+
+  lo_abap_objectdescr ?= cl_abap_objectdescr=&gt;describe_by_object_ref( me ).
+
+*  if lo_abap_objectdescr-&gt;absolute_name = &apos;\CLASS=ZCL_SCREENFRAME&apos;.
+  if ls_screens-dynr eq zcl_screenframe=&gt;screen_definition_number and ls_screens-prog eq &apos;Z_SCREENS&apos;.
+    clear ls_screen_header-type.
+    if zcl_screenframe=&gt;is_apptoolbar_enabled eq &apos;X&apos;.
+      ls_screen_header-mili = 192.
+    else.
+      ls_screen_header-mili = 196.
+    endif.
+  else.
+    ls_screen_header-type = &apos;I&apos;. &quot;All screens declared as subscreens and framed in a standard outer on z_callscreen
+  endif.
+
+  &quot;All screens instantiated in Z_SCREENS function pool therefore constant
+  screengroup = ls_screens-prog = ls_screen_header-prog = &apos;SAPLZ_SCREENS&apos;. &quot;Defaulted
+  concatenate  &apos;0&apos;  instancenum  into screennumber.
+  ls_screens-dynr = ls_screen_header-dnum = ls_screen_header-fnum = screennumber.
+*  screennumber = ls_screens-dynr = ls_screen_header-dnum = ls_screen_header-fnum = &apos;0&apos; &amp;&amp; instancenum.
+
+  delete dynpro screennumber. &quot;Clear any previous instance remnants.
+
+  generate dynpro
+  ls_screen_header
+  lt_d021snew
+  lt_flowlogic
+  lt_params
+  id ls_screens
+  message f1 line f2 word f3.
+  if sy-subrc &lt;&gt; 0.
+*       SY-SUBRC = 0: The screen was generated.
+*       SY-SUBRC = 4: The error is in the flow logic.
+*       SY-SUBRC = 8: The error is in the field list.
+  endif.
+
+
+
+* Notes
+**********************************************************************
+* Could have test for z_screens function pool and module existance
+* - if not then could generate dynamically for complete independence.
+
+
+* CL_SYSTEM_TRANSACTION_STATE=&gt;TRANSACTION_FINISHED
+* CALL METHOD cl_gui_cfw=&gt;set_new_ok_code( &apos;DETAIL&apos; ).
+*  data aaa type ref to
+*        CL_GUI_CONTROL.
+*        CL_GUI_OBJECT.
+
+*method get_screenctlr_name .
+**SCREEN_CTLR      Importing Type Ref To ZCL_SCREENHOOK
+**SCREEN_CTLR_NAME Returning Type  PROGNAME
+*
+*  data:
+*        lo_typedescr  type ref to cl_abap_typedescr.
+*
+*
+**Procedure to get super class name so that if class is inherited it can
+**Would therefore need to return range of names starting with the base cl
+***********************************************************************
+**  lo_classdescr  TYPE REF TO cl_abap_classdescr.
+*
+**  lo_classdescr ?= cl_abap_classdescr=&gt;describe_by_object_ref( screen_c
+**  lo_typedescr = lo_classdescr-&gt;get_super_class_type( ).
+***  screen_ctlr_name = lo_typedescr-&gt;get_relative_name( ).
+**  screen_ctlr_name = lo_typedescr-&gt;absolute_name.
+***********************************************************************
+*
+*  lo_typedescr = cl_abap_typedescr=&gt;describe_by_object_ref( SCREEN_CTLR ).
+**  screen_ctlr_name = descr_ref-&gt;get_relative_name( ).
+*  screen_ctlr_name = lo_typedescr-&gt;absolute_name.
+*
+*endmethod.
+
+
+*method get_dynnr .
+**PV_SCREENCTLR_NAME Importing Type  D020T-DTXT
+**PT_SCREENS         Returning Type  TYS_SCREENS
+*
+*  select
+*  d020t~prog
+*  d020t~dynr
+*  into table PT_SCREENS
+*  from d020t
+*  where
+*  dtxt eq pv_screenctlr_name.
+*
+*  if PT_SCREENS is initial.
+*    message &apos;Associated Screen Not Found&apos; type &apos;S&apos;.
+*  endif.
+*
+*endmethod.
+
+
+*method refresh_references.
+*
+*  field-SYMBOLS:
+*  &lt;fs0&gt;  type any,
+*  &lt;fs1&gt;  type any.
+*
+*
+*  do.
+*    assign component sy-index of structure s_fields to &lt;fs0&gt;.
+*    if sy-subrc eq 0.
+*      assign &lt;fs0&gt;-&gt;* to &lt;fs0&gt;. &quot;Possible error if no fields have been assigned?
+*
+*      if &lt;fs0&gt; is not initial.
+*        assign component sy-index of structure s_fields to &lt;fs1&gt;.
+*        get reference of &lt;fs0&gt; into &lt;fs1&gt;.
+*
+*      endif.
+*    else.
+*      exit.
+*    endif.
+*  enddo.
+*
+*endmethod.
+
+
+*Code for future reference.
+**********************************************************************
+*cl_swf_utl_iterator.
+
+*  CALL FUNCTION &apos;RPY_DYNPRO_READ_NATIVE&apos;
+
+*    MESSAGE E004 WITH DYNP_ID  RAISING NOT_FOUND.
+
+* Dynprobeschreibungstext importieren
+*  CLEAR DYNPROTEXT.
+*  SELECT SINGLE * FROM  D020T
+*  WHERE  PROG        = PROGNAME
+*  AND    DYNR        = DYNNUMB
+*  AND    LANG        = HEADER-SPRA.
+*  DYNPROTEXT = D020T-DTXT.
+*
+** dynprobezogene Feldtexte importieren
+*  REFRESH FIELDTEXTS.
+*  SELECT        * FROM  D021T  INTO TABLE FIELDTEXTS
+*  WHERE  PROG        = PROGNAME
+*  AND    DYNR        = DYNNUMB
+*  AND    LANG        = HEADER-SPRA.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREEN" CMPNAME="GET_ELEMENTS" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SCREEN" CMPNAME="GET_ELEMENTS" SCONAME="PS_ELEMENTS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130217" CHANGEDON="00000000" PARDECLTYP="2" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA"/>
+   <source>method get_elements.
+
+  data:
+    type,
+    num_comp  type i,
+    ref       type ref to object.
+
+  field-symbols:
+    &lt;name&gt;      type d021s-fnam,
+    &lt;p_element&gt; type any.
+
+
+
+  describe field ps_elements type type components num_comp. &quot;components addition needed for non-unicode programs.
+  if type ne &apos;u&apos; and type ne &apos;v&apos;. &quot;Flat and Deep structures.
+    return.&quot;exception raised.
+  endif.
+
+  loop at t_elements into ref.
+    at first.&quot;Skip screen reference.
+      continue.
+    endat.
+
+    assign ref-&gt;(&apos;name&apos;) to &lt;name&gt;.
+    assign component &lt;name&gt; of structure ps_elements to &lt;p_element&gt;.
+    if sy-subrc eq 0.
+*     //TODO check the class types match. (try)
+      &lt;p_element&gt; ?= ref.
+    endif.
+  endloop.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SCREEN" CMPNAME="PBO" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130311" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method pbo .
+
+  data:
+    element     like line of t_elements,
+    o_tabstrip  type ref to zcl_tabstrip,
+    t_tabs      type table of ref to zcl_tabbutton,
+    o_field     type ref to zcl_screenfield,
+    t_fields    type table of ref to zcl_screenfield.
+
+
+* SET TABSTRIPS / GET FIELDS-ONLY TABLE
+**********************************************************************
+  loop at t_elements into element.
+    try.
+        o_tabstrip ?= element.
+        o_tabstrip-&gt;pbo( ).
+      catch cx_sy_move_cast_error.
+
+        try.
+            o_field ?= element.
+            append o_field to t_fields.
+          catch cx_sy_move_cast_error.
+        endtry.
+
+    endtry.
+  endloop.
+**********************************************************************
+
+
+* SET FIELD SCREEN ATTRIBUTES
+**********************************************************************
+  loop at screen. &quot;Make changes where element is on the short list
+    read table t_fields with key table_line-&gt;screenfname = screen-name into o_field.
+    if sy-subrc eq 0.
+      o_field-&gt;set_screen_attributes( changing pv_screen_attributes = screen ).
+*      screen = o_field-&gt;get_screen_attributes( ).
+      modify screen.
+    endif.
+  endloop.
+**********************************************************************
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>

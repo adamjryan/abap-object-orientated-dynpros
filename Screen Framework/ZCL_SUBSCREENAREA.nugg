@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nugget name="ZCL_SUBSCREENAREA">
+ <CLAS CLSNAME="ZCL_SUBSCREENAREA" VERSION="1" LANGU="E" DESCRIPT="Encapsultes a subscreen container" UUID="31089365C5F19B479948C4187F436DEE" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20130104" CHANGEDON="00000000" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="620" CLSBCCAT="00">
+  <friends CLSNAME="ZCL_SUBSCREENAREA" REFCLSNAME="ZCL_SELECTIONSCREEN" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000"/>
+  <publicSection>class ZCL_SUBSCREENAREA definition
+  public
+  create public
+
+  global friends ZCL_SELECTIONSCREEN .
+
+*&quot;* public components of class ZCL_SUBSCREENAREA
+*&quot;* do not include other source files here!!!
+public section.
+
+  data NAME type D021S-FNAM read-only .
+  data SCREENNAME type D021S-FNAM read-only .
+
+  methods CONSTRUCTOR
+    importing
+      !PV_NAME type D021S-FNAM
+      !PV_SCREENNAME type D021S-FNAM .
+  methods SET_SUBSCREEN
+    importing
+      !PO_SCREEN type ref to ZCL_SCREEN .
+  methods GET_SUBSCREEN
+    returning
+      value(PO_SCREEN) type ref to ZCL_SCREEN .
+  methods REMOVE_SUBSCREEN
+    returning
+      value(PO_SCREEN) type ref to ZCL_SCREEN .</publicSection>
+  <protectedSection>protected section.
+*&quot;* protected components of class ZCL_SUBSCREENAREA
+*&quot;* do not include other source files here!!!</protectedSection>
+  <privateSection>*&quot;* private components of class ZCL_SUBSCREENAREA
+*&quot;* do not include other source files here!!!
+private section.
+
+  data O_SCREEN type ref to ZCL_SCREEN .
+  data PROG type PROGNAME .
+  data DYNR type DYNNR .</privateSection>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <localTestClasses>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localTestClasses>
+  <textPool/>
+  <classDocumentation/>
+  <attribute CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="DYNR" VERSION="1" LANGU="E" DESCRIPT="Number of the following screen" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="DYNNR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="NAME" VERSION="1" LANGU="E" DESCRIPT="NAME" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDBY="ITAJR" CHANGEDON="20130206" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="O_SCREEN" VERSION="1" LANGU="E" DESCRIPT="O_SCREEN" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_SCREEN" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="PROG" VERSION="1" LANGU="E" DESCRIPT="ABAP Program Name" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="PROGNAME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <attribute CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" EXPOSURE="2" STATE="1" EDITORDER="2 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDBY="ITAJR" CHANGEDON="20130206" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="D021S-FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="620"/>
+  <method CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="CONSTRUCTOR" SCONAME="PV_NAME" VERSION="1" LANGU="E" DESCRIPT="PV_NAME" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <parameter CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="CONSTRUCTOR" SCONAME="PV_SCREENNAME" VERSION="1" LANGU="E" DESCRIPT="Field name" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130206" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="D021S-FNAM"/>
+   <source>method constructor.
+
+  name =  pv_name.
+  screenname = pv_screenname.
+  prog = &apos;Z_SCREENS&apos;.
+  dynr = &apos;0002&apos;.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="GET_SUBSCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="GET_SUBSCREEN" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" DESCRIPT="Links function group screen to object" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method get_subscreen.
+
+  po_screen = o_screen.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="REMOVE_SUBSCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="REMOVE_SUBSCREEN" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" DESCRIPT="Links function group screen to object" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130306" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method remove_subscreen.
+
+  prog = &apos;Z_SCREENS&apos;.
+  dynr = &apos;0002&apos;.
+  po_screen = o_screen.
+  clear o_screen.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+  <method CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="SET_SUBSCREEN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="620" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_SUBSCREENAREA" CMPNAME="SET_SUBSCREEN" SCONAME="PO_SCREEN" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="ITAJR" CREATEDON="20130205" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_SCREEN"/>
+   <source>method set_subscreen.
+
+  o_screen = po_screen.
+  prog = o_screen-&gt;screengroup.
+  dynr = o_screen-&gt;screennumber.
+
+endmethod.</source>
+   <methodDocumentation/>
+  </method>
+ </CLAS>
+</nugget>
